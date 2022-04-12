@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        const value = prompt('세 개의 숫자를 입력하세요.','1, 2, 5 와 같이 입력하시오.').split(", ");
+
+        const intAr = new Array;            //새로운 배열 생성
+
+        intAr.push(Number(value[0]));       //새로운 배열에 입력받은 value값 입력후 문자열 숫자로 변환
+        intAr.push(Number(value[1]));
+        intAr.push(Number(value[2]));
+
+        intAr.sort(function(a, b)           //새로운 배열을 오름차순으로 설정
+        {
+            return a - b; 
+        });
+
+        alert(intAr[1])                     //중간 값 출력
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+</head>
+<body>
+    <script> 
+        const twoNum = prompt('두값을 입력하시오.', ', 으로 구분');
+        const twoVal = twoNum.split(', ');
+        let twoAr = [];
+
+        //문자열을 숫자타입으로 변환
+        for (let i = 0; i < 2; i++)         
+        {
+            twoAr[i] = twoVal[i];
+        }
+
+  
+        //작은값 부터 큰값을 더하는 함수
+        const add = function(...val)
+        {
+            let ar = []
+            for(let i = 0; i < val.length; i++)
+            {   
+                ar[i] = Number(val[i]);
+                
+            }
+
+            let smallNum;   //작은 숫자
+            let bigNum;     //큰 숫자
+
+            //작은숫자와 큰 숫자를 정하라
+            if((ar[0]) > (ar[1]))
+            {
+            	smallNum = ar[1];
+            	bigNum = ar[0];
+            }
+            else if ((ar[0]) < (ar[1]))
+            {
+                smallNum = ar[0];
+            	bigNum = ar[1];
+            }
+            else
+            {
+                alert('숫자가 입력되지 않았습니다.');
+            }
+            
+            let total = 0;  //총합
+            //총합을 구하는 식
+            for (let i = smallNum; i <= bigNum; i++)
+            {
+                total = total + i;
+            }
+
+            return total;
+        
+        }
+
+        let result = add(twoAr[0], twoAr[1])
+        alert(result);
+
+    </script>
+</body>
+</html>
