@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>         
+        const title = {
+            'id' : 'ID',
+            'nmae' : '이름'
+        }
+
+        const data =[
+            {id:3, name: 'sdf'},
+            {id:13, name: 'dfg'},
+            {id:25, name: 'hsd'},
+            {id:6, name: 'hsc'},
+            {id:7, name: 'dsg'},
+            {id:23, name: 'hgg'},
+            {id:17, name: 'hgf'}
+        ]
+
+        let idResult = data.sort((a, b) => a.id - b.id);
+        console.log(idResult);
+
+
+
+        let $table = document.createElement('table');
+        for (let i in title)
+        {
+            let $th = document.createElement('th');
+            let $tr = document.createElement('tr');
+        
+            $tr.innerHTML = title[i];
+            $th.appendChild($tr);
+            $table.appendChild($th);
+        }
+
+        data.map(data => {
+            let $tr = document.createElement('tr');
+                for(let i in data){
+                    let $td = document.createElement('td');
+                    $td.innerHTML = data[i];
+                    $tr.appendChild($td);
+                    $table.appendChild($tr);
+                }
+        })
+
+        document.body.appendChild($table);
+
+    </script>
+</body>
+</html>

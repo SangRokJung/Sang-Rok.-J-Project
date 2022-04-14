@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function bubbleSort(num, rNum, cmd){
+            randNum = [];
+
+            //랜덤수 rNum개 생성
+            for (let i = 0; i < rNum; i++)
+            {
+                randNum[i] = Math.floor(Math.random() * num + 1)
+            }
+
+            //오름차순 및 내림차순
+            if (cmd === 'up')
+            {
+                randNum.sort(function(a, b)
+                {
+                    return a - b;
+                })
+            }
+            else if (cmd === 'down')
+            {
+                randNum.sort(function(a, b)
+                {
+                    return b - a;
+                })               
+            }
+            else
+            {
+                return null
+            }
+
+            return randNum
+        }
+
+        const sort = {}
+
+        //객체에 입력
+        sort.asOrder = bubbleSort(30, 100,'up')
+        sort.dsOrder = bubbleSort(50, 20,'down')
+
+        console.log(sort.asOrder)
+        console.log(sort.adOrder)
+
+    </script>
+</body>
+</html>
