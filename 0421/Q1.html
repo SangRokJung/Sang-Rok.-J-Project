@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class rectangle
+        {   
+            #width
+            #height
+            constructor(_width, _height)
+            {   
+                if (_width < 0 || _height < 0 || typeof(_width) !== 'number' || typeof(_height) !== 'number') {
+                    throw 'parameter is not a number'
+                }
+                else {
+                    this.#width = _width
+                    this.#height = _height
+                }
+            }
+
+            getPerimeter(){
+                return 2 * (this.#width + this.#height);
+            }
+
+            getArea(){
+                return this.#width * this.#height;
+            }
+
+            get width() {
+                return this.#width
+            }
+            set width(_width) {
+                this.#height = _width
+            }
+            get height() {
+                return this.#height
+            }
+            set width(_height) {
+                this.#height = _height
+            }
+
+        }
+
+        class square extends rectangle
+        {
+            constructor(_length)
+            {
+                if (typeof(_length) === 'number' && _length > 0)
+                {
+                    super(_length, _length)
+                }
+                else
+                {
+                    throw 'parameter is not a number'
+                }
+            }
+            getLength() {
+                return this.width
+            }
+        }   
+
+        const s1 = new square(5);
+        const r1 = new rectangle(5, 9)
+
+
+        console.log(s1.getArea())
+        console.log(r1.getPerimeter())
+
+
+        //25
+        //28
+    </script>
+</body>
+</html>
