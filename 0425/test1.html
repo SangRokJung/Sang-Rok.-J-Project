@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- //이메일을 입력받아 ID와 Domain을 추출하는 코드를 작성하시오﻿
+    단 이메일은 prompt()로 입력받으시오.﻿ -->
+
+    <h1 id="id_id"></h1>
+    <h1 id="id_domain"></h1>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () =>{
+            const val = prompt('Please enter Your E-Mail', 'xxx@xxx.com');
+
+            const email = val.split('@');
+
+            const _id = document.querySelector('#id_id');
+            const _domain = document.querySelector('#id_domain')
+
+            let id = email[0];
+            let domain = 'www.' + email[1]
+
+            id_id.textContent = `ID : ${id}`
+            id_domain.textContent = `DOMAIN : ${domain}`
+        })
+
+    </script>
+</body>
+</html>
