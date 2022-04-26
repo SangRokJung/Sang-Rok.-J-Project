@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+      var interval = setinterval(function() {
+        console.log('Interval');
+      }, 2000)
+
+      const interval2 = setinterval(function() {
+        console.log('Interval2');
+      }, 3000)
+
+      clearInterval(interval);
+      clearInterval(interval2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
