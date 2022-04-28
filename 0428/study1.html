@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script>
+
+</script>
+</head>
+<body>
+    <script>
+        //함수
+        const getDiceNumber = (_num) => {
+            if(_num > 5 || _num <= 0 || typeof(_num) === 'string'){
+                throw 'The number of dice has been exceeded.'
+            }
+            else{
+                let dice = {}
+
+                let randNum = [] //주사위의 value.
+
+                let alpha = ['A', 'B', 'C', 'D', 'E'] //5개 주사위 key.
+
+                //
+                for (let i = 0; i < _num; i++){
+                    randNum[i] = Math.floor((Math.random() * (7 - 1)) + 1) //1~6 난수 생성
+                    dice[alpha[i]] = randNum[i]
+                }
+                return dice
+            }
+            // {A : 2, B : 4, C : 3}
+        }
+
+
+
+        //출력
+        const res = getDiceNumber(3);
+        console.log(res)
+
+    </script>
+</body>
+</html>

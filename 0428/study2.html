@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const h1Tag = document.createElement('h1') 
+        h1Tag.textContent = 'TO-Do List'
+        document.body.appendChild(h1Tag)
+
+        const txtTag = document.createElement('input')
+        document.body.appendChild(txtTag);
+
+        const inputTag = document.createElement('button')
+        inputTag.textContent = 'Add'
+        document.body.appendChild(inputTag)
+
+        //ToDoList 저장할 목록
+        const _div = document.createElement('div')
+        document.body.appendChild(_div)
+
+
+        inputTag.addEventListener('click', (event) =>{
+            //통합 div
+            const item = document.createElement('div')
+
+            //체크박스+기능
+            const chckbox = document.createElement('input')
+            chckbox.type = 'checkbox'
+
+            chckbox.addEventListener('change', (event) => {
+                if (chckbox.checked){
+                    txt.style.textDecoration = "line-through"
+                }
+                else{
+                    txt.style.textDecoration = ''
+                }
+            })
+
+            //텍스트
+            const txt = document.createElement('span');
+            txt.textContent = txtTag.value;
+
+            //삭제버튼+기능
+            const delBtn = document.createElement('button')
+            delBtn.textContent = 'Delete'
+            delBtn.addEventListener('click', (event) => {
+                _div.removeChild(item)
+            })
+
+            //줄띄움
+            const brTag = document.createElement('br')
+
+            //상속(묶는다.)
+            item.append(chckbox, txt, delBtn, brTag)
+            _div.appendChild(item)
+        })
+    })
+
+// createElement
+
+// createTextNode
+
+// appendChild
+
+// append 
+
+// removeChild
+
+// checked
+
+// .style.textDecoration = ""
+    
+</script>
+</head>
+
+<body>
+</body>
+</html>
