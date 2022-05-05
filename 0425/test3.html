@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- //이메일 형식인지 검사하는 코드를 작성하시오.
+    단 검사는 키를 누를 때 마다(keyup) 검사해야함. -->
+    <!-- //이메일 형식 @와 @뒤에 .이 있어야함. -->
+
+
+    Please enter your E-Mail <br> <input type="text">
+    <p>format of the E-Mail? : </p>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const input = document.querySelector('input');
+            const p = document.querySelector('p');
+
+            const checkEmail = function keyup(event){
+
+                if (input.includes('@') === true) {
+
+                    const str = input.split('@');
+                    
+                    if (str[1].includes('.') === true ){
+                        p.textcontent = 'For mat of the email'
+                        return;
+                    }
+                    else {
+                        p.textcontent = 'not the format of the email'
+                        return; 
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
