@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+
+    <script src="./main.js"></script>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 
 </head>
 <body>
-    <!-- 음악과 아티스트를 태그에 기반하여 소개하는 사이트
+    <!--사용자가 원하는 음악을 태그 데이터를 기반으로 하여
+        가장 쉽고 빠르게 찾아 들을 수 있는 웹사이트다. 
+        
+
+        * 메인메뉴 : ARTIST, MUSIC, M/V, COMUNITY, LOGIN
+        * 메인 메뉴 접속 후 생성 메뉴 : #(입력한 태그가 추가됨), 태그입력공간, 검색 버튼
         
         [음악]
         {태그}
@@ -19,33 +29,33 @@
         장르 : Rock, PopRock, Hiphop/Rap, Dance, RnB/Soul, CityPop, Synthwave , Jazz, Electro, Funk, Folk, House, Techno, Dsico, SynyhPop, KPOP, EDM
         템포 : 1 ~ 200 (BPM)
         청각 스트레스 지수 : 1 ~ 10
-
-        [사진]
-        사진
-
-
-
-    1. 최상단 분류 : 홈, 아티스트, 뮤직, 뮤직비디오, 검색, 로그인
-    2. 따라오는 메뉴 : {태그} 검색
-    3. ?? -->
+        (+ 사진 모음)
+    -->
 
     <div class="container">
         <nav class="global-nav">
             <div class="global-nav-links">
-                <a href="#" class="global-nav-item" id="global-nav-item-home"></a>
-                <a href="#" class="global-nav-item">ARTIST</a>
-                <a href="#" class="global-nav-item">MUSIC</a>
+                <a href="#" class="global-nav-item-m" id="global-nav-item-home">
+                    <span class="global-nav-item-home-1">home</span>
+                </a>
+                <a href="#" class="global-nav-item">Artist</a>
+                <a href="#" class="global-nav-item">Music</a>
                 <a href="#" class="global-nav-item">M/V</a>
-                <a href="#" class="global-nav-item">SERCH</a>
-                <a href="#" class="global-nav-item">LOGIN</a>
+                <a href="#" class="global-nav-item">Community</a>
+                <a href="#" class="global-nav-item">Login</a>
             </div>
         </nav>
         <nav class="local-nav">
             <div class="local-nav-links">
-                <a href="#" class="local-nav-item">감정</a>
-                <a href="#" class="local-nav-item">상황</a>
-                <a href="#" class="local-nav-item">장르</a>
-                <a href="#" class="local-nav-item">템포</a>
+                <div class="local-tag-set" id="id_tag_set">
+
+                </div>
+                <!-- <a href="#" class="local-nav-item" id="local-nav-item-tag">#</a> -->
+                <div class="local-tag-add">
+                    <a href="#" class="local-nav-item" id="local-nav-item-serch">TAG</a>
+                    <input type="text" id="local-nav-input" placeholder="태그를 추가하세요.">
+                    <input type="button" value="ADD" id="local-nav-btn">
+                </div>
             </div>
         </nav>
     </div>
