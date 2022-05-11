@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    //페이지 출력시 이벤트
+    const ttTag = document.getElementsByClassName('local-nav-links-0')
+
     //태그 ADD & DELETE 이벤트
     const tagAddBtnTag = document.querySelector('#local-nav-btn')
     const tagAddIptTag = document.querySelector('#local-nav-input')
@@ -43,7 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log(lcNavLinks1Tag.style)
         console.log('START')
     })
+
     //스크롤 이벤트
+
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //화면 출력시 이벤트
+
 
     
 })
