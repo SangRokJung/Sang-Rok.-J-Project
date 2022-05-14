@@ -72,9 +72,10 @@ a {
     display: block;
     position: fixed;     
     top : 194px;
-    left :250px;
+    /* left :250px; */
 }
 
+.fadein-items0,
 .fadein-items1,
 .fadein-items2,
 .fadein-items3{
@@ -84,22 +85,22 @@ a {
 #id_mainIMG{
     position: fixed;     
     top : 350px;
-    right :250px  
+    right :250px;
 }
 #id_mainIMG1{
     position: fixed;     
     top : 350px;
-    right :560px
+    right :560px;
 }
 #id_mainIMG2{
     position: fixed;     
     top : 350px;
-    right :871px
+    right :871px;
 }
 #id_mainIMG3{
     position: fixed;     
     top : 350px;
-    right :-60px
+    right :-60px;
 }
 #id_mainIMG4{
     position: fixed;     
@@ -109,12 +110,12 @@ a {
 #id_mainIMG5{
     position: fixed;     
     top : 350px;
-    right : 1495px
+    right : 1492px;
 }
 #id_mainIMG6{
     position: fixed;     
     top : 350px;
-    right : 1808px
+    right : 1803px;
 }
 
 
@@ -133,7 +134,9 @@ a {
 .local-nav-item{
     text-align: center;
 }
-
+.local-nav-item-0{
+    text-align: left;
+}
 
 
 .local-nav-links-2{
@@ -145,13 +148,13 @@ a {
 
 }
 
-
-
+/* video set START */
 #id_ytb1{
     display: block;
     position: fixed;     
     top: 351px;
     left: -95px;
+    pointer-events: none;
 }
 
 #id_ytb2{
@@ -159,6 +162,7 @@ a {
     position: fixed;     
     top: 351px;
     left: 821px;
+    pointer-events: none;
 }
 
 #id_ytb3{
@@ -166,7 +170,9 @@ a {
     position: fixed;     
     top: 351px;
     left: 1736px;
+    pointer-events: none;
 }
+/* video set END */
 
 /* 제외 */
 /* .local-nav-item:not(.local-nav-item:nth-child(1)){
@@ -254,3 +260,24 @@ a {
     background: rgb(90, 90, 90); 
     color: white;
 }
+
+#id_links-3-p-1 p,
+#id_links-3-p-2 p,
+#id_links-3-p-3 p,
+#id_links-3-p-4 p{
+    top: 301px;
+    font-size: 30px;
+    font-weight: 900;
+}
+/* #id_links-3-p-1 p{
+    left: 245px;
+}
+#id_links-3-p-2 p{
+    left: 245px;
+}
+#id_links-3-p-3 p{
+    left: 245px;
+}
+#id_links-3-p-4 p{
+    left: 245px;
+} */

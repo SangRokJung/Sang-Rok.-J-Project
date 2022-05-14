@@ -3,13 +3,13 @@
 
     * 상단 메인 메뉴 : Home, Artist, Music, M/V, Concert, Communuty, Login
         
-        Home : 사이트의 메인 페이지, 최신 주목받는 컨텐츠를 보여준다.
-        Artist : 태그 기반으로 Artist를 검색할 수 있다.
-        Music : 태그 기반으로 Music을 검색할 수 있다.
-        M/V : 태그 기반으로 M/V를 검색할 수 있다.
+        Home : 사이트의 메인 페이지, 사이트(앱)의 유용성을 보여주는 파트.
+        Artist : 태그 기반으로 Artist를 검색.
+        Music : 태그 기반으로 Music을 검색.
+        M/V : 태그 기반으로 M/V를 검색.
         Concert : (필요성 고려)
         Communuty : (필요성 고려)
-        Login : 로그인 페이지로 이동한다.
+        Login : 로그인 페이지.
 
         [태그]
         감정 : 기쁨(즐거움), 슬픔, 욕망, 긴장감, 그리움, 희망, 공허함, 외로움, 설렘, 무의미함, 오묘함, 야릇함, 신비함
@@ -22,7 +22,63 @@
 
 [0511]
 - 메인 페이지 변경
-    1. opacity, translate 액션 생성
+    0.  Window의 스크롤값, 현재 보여지는 Section,
+        현재 Section의 스크롤 값을 구하기 위한 현재 Section 전의 Section의 높이 값의 합
+        현재 Section의 스크롤값, 
+        Interval의 ID, Inerval 함수에 적용할 opicity, translateY의 값
+
+    1.  sectionSet Object 생성
+        각 섹션의 Position Type, 높이, 높이 설정을 위한 배수(Multiple), 
+        document의 태그를 로딩하는 Object, Object의 스타일 설정 값을 생성
+
+    2.  initSectionSet() 생성 
+        Section의 높이를 설정하는 함수
+
+    3.  getCurrentSection() 생성
+        Y Offset의 값과 Section Height의 값을 비교하여 Current Section을 가져는 하는 함수
+
+    4.  getPrevSectionHeight() 생성
+        현재 Section의 Height와 전 Section의 Height를 더하는 함수
+
+    5.  initHTMLPage() 생성
+        최초 로딩시 HTML Page를 초기화 하는 함수
+         * initSectionSet() 실행
+
+    6.  calcValue(values) 생성
+        현재 Section Y Offset 값에 따라 실행 시킬 함수
+        values값에 따라 애니메이션을 실행할 범위의 식이 적용된다.
+        //비교값 : 기준값
+
+    7.  playAnimation() 생성
+        Offset Rate를 생성 : section의 Y Offset / Current Section의 Height
+        각 Current Section마다 Offset Rate값에 따라 calcValue()를 실행하여
+        해당 Section의 Object의 style을 적용시켜 애니메이션을 발생시키는 함수
+    
+    8.  scrollLoop() 생성
+        스크롤시 수행 될 함수
+        * getCurrentSection() 실행
+        document의 body에 Attribute id를 Current Section의 따른 값을 입력
+        * playAnimation() 실행
+
+    9.  윈도우 Scroll 이벤트() 생성
+        yOffset             = window.scrollY
+        curreentSection     = getCurrentSection()
+        PrevSectionHeight   = getPrevSectionHeight()
+        sectionYOffset      = yOffset - PrevSectionHeight
+
+        * scrollLoop() 실행
+
+    10. 윈도우 DOMContentLaoded 이벤트() 생성
+        * animi() Interval 실행
+
 [0512]
 -메인 페이지
-    1. 메인 에니메이션 생성
+    1. Section 0 상단 메인 타이틀 윈도우 이벤트로 에니메이션 출력
+    2. Section 1 타이틀, 이미지, 동영상(유튜브) 생성
+    3. Section 1 스크롤 이벤트로 에니메이션 출력
+    4. Section 2 텍스트 추가
+
++ 유튜브 링크소스 실제 동영상 파일로 대체.
++ 영상이 클릭 가능하게 opicity가 0이 될때 DIV의 display를 none으로
++ Fade Out이 확실하게 되야된다.
++ section 2 텍스트 추가, 아이콘 추가,
