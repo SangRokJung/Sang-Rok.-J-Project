@@ -185,38 +185,29 @@
         if(values.length === 3){
             partStart = sectionSet[currentSection].height * values[2].start;
             partEnd = sectionSet[currentSection].height * values[2].end;
+            console.log('sectionYOffset = ' + sectionYOffset)
+            console.log('partStart = ' + partStart)
+            console.log('partEnd = ' + partEnd)
             partHeight = partEnd - partStart;
 
-            if (sectionYOffset >= partStart && sectionYOffset <= partEnd){
+            if (sectionYOffset >= partStart && sectionYOffset <= partEnd * 0.99) {
+                // console.log('Part ACTION VALUES')
                 rate = (sectionYOffset - partStart) / partHeight;
                 range = values[1] - values[0];
                 result = ((rate * range) + values[0]);
                 return result
             }
-            else if (sectionYOffset < partStart) {
-                result = values[0];
+            else if (sectionYOffset < partStart ) {
+                // console.log('Part START VALUES')
+                result = values[0]
                 return result;
             }
-            else if (sectionYOffset > partEnd) {
-                console.log('END')
+            else if (sectionYOffset >= partEnd * 0.99) {
+                // console.log('Part END VALUES')
                 result = values[1]
                 return result;
             }
-
-            // rate = (sectionYOffset - partStart) / partHeight;
-            // range = values[1] - values[0];
-            // result = ((rate * range) + values[0]);
-            // if (result <= 0.05) {
-            //     result = values[0];
-            //     return result
-            // }
-            // else if (result >= 0.95) {
-            //     result = values[1];
-            //     return result
-            // }
-            // return result
-
-
+            //풀어서 쓴 식
             // rate = (sectionYOffset - (sectionSet[currentSection].height) * values[2].start ) / 
             //         ((sectionSet[currentSection].height) * (values[2].end - values[2].start))        
             // range = values[1] - values[0];

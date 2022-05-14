@@ -71,14 +71,21 @@
     10. 윈도우 DOMContentLaoded 이벤트() 생성
         * animi() Interval 실행
 
-[0512]
+[0513]
 -메인 페이지
     1. Section 0 상단 메인 타이틀 윈도우 이벤트로 에니메이션 출력
     2. Section 1 타이틀, 이미지, 동영상(유튜브) 생성
     3. Section 1 스크롤 이벤트로 에니메이션 출력
     4. Section 2 텍스트 추가
 
-+ 유튜브 링크소스 실제 동영상 파일로 대체.
 + 영상이 클릭 가능하게 opicity가 0이 될때 DIV의 display를 none으로
 + Fade Out이 확실하게 되야된다.
 + section 2 텍스트 추가, 아이콘 추가,
+
+[0514]
+- 메인 페이지
+    최초 로딩시 메인타이틀이 살짝 버벅임이 있음(MAC Chrome)
+    calcValue() Part가 시작됨과 끝날 때의 values를 처리 개선
+    각 Part의 Diplay 속성값 개선 (none, block)
+    메인페이지 하단 텍스트 생성
++ local-nav-links 배경 영상 생성

@@ -167,26 +167,34 @@
         let result = 0;
         let range = 0;
         let rate = 0;
+        //구하고자 하는 영역의 높이 시작값, 끝 값, 영역의 전체 높이 값, 영역의 Y Offset
+        let partStart = 0;
+        let partEnd = 0;
+        let partHeight = 0;
 
         if(values.length === 3){
             partStart = sectionSet[currentSection].height * values[2].start;
             partEnd = sectionSet[currentSection].height * values[2].end;
-            // console.log('sectionYOffset = ' + sectionYOffset)
-            // console.log('partEnd = ' + partEnd)
+            console.log('sectionYOffset = ' + sectionYOffset)
+            console.log('partStart = ' + partStart)
+            console.log('partEnd = ' + partEnd)
             partHeight = partEnd - partStart;
 
-            if (sectionYOffset >= partStart && sectionYOffset <= partEnd) {
+            if (sectionYOffset >= partStart && sectionYOffset <= partEnd * 0.99) {
+                // console.log('Part ACTION VALUES')
                 rate = (sectionYOffset - partStart) / partHeight;
                 range = values[1] - values[0];
                 result = ((rate * range) + values[0]);
                 return result
             }
             else if (sectionYOffset < partStart ) {
-                result = values[1]
+                console.log('Part START VALUES')
+                result = values[0]
                 return result;
             }
-            else if (sectionYOffset > partEnd * 0.95) {
-                result = values[0]
+            else if (sectionYOffset >= partEnd * 0.99) {
+                console.log('Part END VALUES')
+                result = values[1]
                 return result;
             }
             // 풀어쓴 식
@@ -236,6 +244,9 @@
 
         switch(currentSection){
             case 0 : 
+                sectionSet[1].objs.seriseMsgA.style.display = `${'none'}`;
+                sectionSet[1].objs.seriseMsgB.style.display = `${'none'}`;
+                sectionSet[1].objs.seriseMsgC.style.display = `${'none'}`;
                 break;
 
             case 1 : 
@@ -246,6 +257,8 @@
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.25) {
+                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
+
                     opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in)
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
                 }
@@ -254,6 +267,9 @@
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
                 }
                 else if (offsetRate >= 0.4 && offsetRate <= 0.55) {
+                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'none'}`;
+                    sectionSet[currentSection].objs.seriseMsgB.style.display = `${'block'}`;
+
                     opInVal = calcValue(sectionSet[currentSection].values.MessageB_opacity_in)
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opInVal}`;
                 }
@@ -262,6 +278,9 @@
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
                 }
                 else if (offsetRate >= 0.7 && offsetRate <= 0.85) {
+                    sectionSet[currentSection].objs.seriseMsgB.style.display = `${'none'}`;
+                    sectionSet[currentSection].objs.seriseMsgC.style.display = `${'block'}`;
+
                     opInVal = calcValue(sectionSet[currentSection].values.MessageC_opacity_in)
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opInVal}`;
                 }
@@ -271,8 +290,6 @@
                 }
                 else{
                 }
-                
-
             //1. 스크롤 값을 기반으로 opacity 범위를 계산한다.
             // opVal = calcValue(sectionSet[currentSection].values.MessageA_opacity)
             
@@ -281,6 +298,8 @@
             break;
 
             case 2 : 
+            sectionSet[2].objs.seriseMsgC.style.display = `${'none'}`;
+
                 sectionSet[1].objs.seriseMsgC.style.opacity = `${0}`;
 
                 opVal = calcValue(sectionSet[currentSection].values.MessageA_opacity)
@@ -298,7 +317,7 @@
     //bRunFlag
 
     const animi = function() {
-        console.log('START')
+        console.log('WINDOW Loading EVENT START')
 
         if (opctValue < 0.93){
             opctValue += 0.01;
@@ -307,7 +326,7 @@
             sectionSet[0].objs.seriseMsgA.style.transform = `translateY(${tslYValue}px)`
         }
         else if (opctValue >= 0.93){
-            console.log('END')
+            console.log('WINDOW Loading EVENT END')
             opctValue = 1;
             clearInterval(intv);
             sectionSet[0].objs.seriseMsgA.style.opacity = `${opctValue}`;
