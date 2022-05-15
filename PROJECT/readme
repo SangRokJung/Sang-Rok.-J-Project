@@ -89,3 +89,9 @@
     각 Part의 Diplay 속성값 개선 (none, block)
     메인페이지 하단 텍스트 생성
 + local-nav-links 배경 영상 생성
+
+[0515]
+- 메인 페이지
+    최초 로딩시 메인타이틀 영상 추가, 타이틀 색 변경
+        * z-index로 위치 지정
+    section1 이미지 추가

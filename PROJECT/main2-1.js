@@ -34,10 +34,12 @@
             objs : {
                 container : document.querySelector('#section-0'),
                 seriseMsgA : document.querySelector('.fadein-items0'),
+                seriseVdieoA : document.querySelector('#div_id_main_vidieo')
             },
             // section에서 사용하는 값들을 저장.
             values : {
                 MessageA_opacity : [0, 1],
+                // VideioA_opacity : [0, 1]
             }
 
         },
@@ -324,6 +326,8 @@
             tslYValue -= 0.5;
             sectionSet[0].objs.seriseMsgA.style.opacity = `${opctValue}`;
             sectionSet[0].objs.seriseMsgA.style.transform = `translateY(${tslYValue}px)`
+            sectionSet[0].objs.seriseVdieoA.style.opacity = `${opctValue}`;
+            // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
         }
         else if (opctValue >= 0.93){
             console.log('WINDOW Loading EVENT END')
@@ -331,6 +335,9 @@
             clearInterval(intv);
             sectionSet[0].objs.seriseMsgA.style.opacity = `${opctValue}`;
             sectionSet[0].objs.seriseMsgA.style.transform = `translateY(${tslYValue}px)`
+            sectionSet[0].objs.seriseVdieoA.style.opacity = `${opctValue}`;
+            // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
+
             return
         }
         // console.log('opctValue = ' + opctValue)
