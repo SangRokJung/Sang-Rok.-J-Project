@@ -182,15 +182,15 @@
             console.log('partEnd = ' + partEnd)
             partHeight = partEnd - partStart;
 
-            if (sectionYOffset >= partStart && sectionYOffset <= partEnd * 0.99) {
+            if (sectionYOffset >= partStart * 1.02 && sectionYOffset <= partEnd * 0.99) {
                 // console.log('Part ACTION VALUES')
                 rate = (sectionYOffset - partStart) / partHeight;
                 range = values[1] - values[0];
                 result = ((rate * range) + values[0]);
                 return result
             }
-            else if (sectionYOffset < partStart ) {
-                console.log('Part START VALUES')
+            else if (sectionYOffset < partStart * 1.02 ) {
+                // console.log('Part START VALUES')
                 result = values[0]
                 return result;
             }

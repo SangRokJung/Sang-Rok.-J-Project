@@ -190,20 +190,20 @@
             console.log('partEnd = ' + partEnd)
             partHeight = partEnd - partStart;
 
-            if (sectionYOffset >= partStart && sectionYOffset <= partEnd * 0.99) {
-                // console.log('Part ACTION VALUES')
+            if (sectionYOffset >= partStart * 1.02 && sectionYOffset <= partEnd * 0.99) {
+                console.log('Part ACTION VALUES')
                 rate = (sectionYOffset - partStart) / partHeight;
                 range = values[1] - values[0];
                 result = ((rate * range) + values[0]);
                 return result
             }
-            else if (sectionYOffset < partStart ) {
-                // console.log('Part START VALUES')
+            else if (sectionYOffset < partStart * 1.02 ) {
+                console.log('Part START VALUES')
                 result = values[0]
                 return result;
             }
             else if (sectionYOffset >= partEnd * 0.99) {
-                // console.log('Part END VALUES')
+                console.log('Part END VALUES')
                 result = values[1]
                 return result;
             }
@@ -265,60 +265,71 @@
                     sectionSet[currentSection].objs.seriseMsgD.style.opacity = `${opOutval}`;
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.2) {
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in)
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
 
-                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageA_translateY_in)
-                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateY(${tsYinVal}px)`;                             
+                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageA_translateY_in);
+                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateY(${tsYinVal}px)`;
                 }
                 else if (offsetRate >= 0.2 && offsetRate <= 0.3) {
                     opOutval = calcValue(sectionSet[currentSection].values.MessageA_opacity_out)
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
 
-                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageA_translateY_out)
+                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageA_translateY_out);
                     sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateY(${tsYoutValue}px)`;
 
+                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${0}`;
                 }
                 else if (offsetRate >= 0.3 && offsetRate <= 0.4) {
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageB_opacity_in)
+                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${0}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageB_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opInVal}`;
 
-                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageB_translateY_in)
+                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageB_translateY_in);
                     sectionSet[currentSection].objs.seriseMsgB.style.transform = `translateY(${tsYinVal}px)`;
                 }
                 else if (offsetRate >= 0.4 && offsetRate <= 0.5) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageB_opacity_out)
+                    opOutval = calcValue(sectionSet[currentSection].values.MessageB_opacity_out);
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
 
-                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageB_translateY_out)
+                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageB_translateY_out);
                     sectionSet[currentSection].objs.seriseMsgB.style.transform = `translateY(${tsYoutValue}px)`;
+
+                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${0}`;
                 }
                 else if (offsetRate >= 0.5 && offsetRate <= 0.6) {
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageC_opacity_in)
+                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${0}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageC_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opInVal}`;
 
-                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageC_translateY_in)
+                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageC_translateY_in);
                     sectionSet[currentSection].objs.seriseMsgC.style.transform = `translateY(${tsYinVal}px)`;
                 }
                 else if (offsetRate >= 0.6 && offsetRate <= 0.7) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageC_opacity_out)
+                    opOutval = calcValue(sectionSet[currentSection].values.MessageC_opacity_out);
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
 
-                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageC_translateY_out)
+                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageC_translateY_out);
                     sectionSet[currentSection].objs.seriseMsgC.style.transform = `translateY(${tsYoutValue}px)`;
+
+                    sectionSet[currentSection].objs.seriseMsgD.style.opacity = `${0}`;
                 }
                 else if (offsetRate >= 0.7 && offsetRate <= 0.8) {
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageD_opacity_in)
+                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${0}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageD_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgD.style.opacity = `${opInVal}`;
 
-                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageD_translateY_in)
+                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageD_translateY_in);
                     sectionSet[currentSection].objs.seriseMsgD.style.transform = `translateY(${tsYinVal}px)`;
                 }
                 else if (offsetRate >= 0.8 && offsetRate <= 0.9) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageD_opacity_out)
+                    opOutval = calcValue(sectionSet[currentSection].values.MessageD_opacity_out);
                     sectionSet[currentSection].objs.seriseMsgD.style.opacity = `${opOutval}`;
 
-                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageD_translateY_out)
+                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageD_translateY_out);
                     sectionSet[currentSection].objs.seriseMsgD.style.transform = `translateY(${tsYoutValue}px)`;
                 }
                 else if (offsetRate >= 0.9 ) {
