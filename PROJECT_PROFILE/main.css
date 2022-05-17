@@ -106,6 +106,15 @@ a {
     color: #CCF3EE;
     padding-left: 132px;
 }
+#id_title_dot_2{
+    font-size: 50px;
+    font-weight: 700;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    position: fixed;
+    top: 194px;
+    color: #CCF3EE;
+    padding-left: 447px;
+}
 
 #id_title h1{
     font-size: 25px;
@@ -201,7 +210,7 @@ a {
 
     background-repeat: no-repeat;
     background-image: url(./line.png);
-    background-image: -webkit-image-set(url(./line.png) 1x, url(./line.png) 2x, url(./line.png) 3x);
+    /* background-image: -webkit-image-set(url(./line.png) 1x, url(./line.png) 2x, url(./line.png) 3x); */
     background-position-x: 0;
     background-position-y: 2px;
     
@@ -220,7 +229,7 @@ a {
 
     background-repeat: no-repeat;
     background-image: url(./img-dot.png);
-    background-image: -webkit-image-set(url(./img-dot.png) 1x, url(./img-dot.png) 2x, url(./img-dot.png) 3x);
+    /* background-image: -webkit-image-set(url(./img-dot.png) 1x, url(./img-dot.png) 2x, url(./img-dot.png) 3x); */
 }
 .history li strong{
     display: block;
@@ -437,7 +446,7 @@ a {
 }
 
 #fadein-items4{
-    padding-top: 278px;
+    padding-top: 1771px;
 }
 
 #fadein-items4 p{

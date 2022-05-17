@@ -76,14 +76,14 @@
         {
             type : 'normal',
             height : 0,
-            multiple : 1,            
+            multiple : 2,            
             objs : {
                 container : document.querySelector('#section-2'),
                 seriseMsgA : document.querySelector('#fadein-items4'),
             },
             values : {
-                MessageA_opacity : [0, 1],
-                MessageA_translateX : [0, -30]
+                MessageA_opacity : [0, 1, {start : 0.5, end : 0.59}],
+                MessageA_translateX : [500, 0, {start : 0.5, end : 0.59}]
             }
 
         }        
@@ -239,6 +239,8 @@
             // }
         }
     }
+
+
     const playAnimation = function() {
         let opInVal = 0;
         let opOutval = 0;
@@ -323,23 +325,28 @@
             break;
 
             case 2 : 
+            console.log('case2')
+                console.log('offsetrate = ' + offsetRate)
                 if (offsetRate < 0.1) {
-                    sectionSet[currentSection + 1].objs.seriseMsgA.style.display = `${'none'}`;
-                    sectionSet[currentSection + 1].objs.seriseMsgB.style.display = `${'none'}`;
-                    sectionSet[currentSection + 1].objs.seriseMsgC.style.display = `${'none'}`;
-    
-                    sectionSet[currentSection + 1].objs.seriseMsgA.style.opacity = `${0}`;
-                    sectionSet[currentSection + 1].objs.seriseMsgB.style.opacity = `${0}`;
-                    sectionSet[currentSection + 1].objs.seriseMsgC.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgA.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgB.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgC.style.display = `${'none'}`;
+
+                    sectionSet[currentSection - 1].objs.seriseMsgA.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgB.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgC.style.opacity = `${0}`;
                     
-                    sectionSet[currentSection].objs.seriseMsgC.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
                 }
-                else if (offsetRate >= 0.8) {
+                else if (offsetRate >= 0.5 && offsetRate <= 0.59) {
 
                     opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity)
                     tsXinVal = calcValue(sectionSet[currentSection].values.MessageA_translateX)
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opVal}`;
-                    sectionSet[currentSection].objs.seriseUlA.style.transform = `translateX(${tsXinVal}px)`;
+                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
+                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateX(${tsXinVal}px)`;
+                }
+                else if (offsetRate > 0.59) {
+
                 }
 
             break;
