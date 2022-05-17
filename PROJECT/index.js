@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //함수
     const opUp = function () {
-        bRunFade = true
+        bRunFade = true;
         opacityValue += 0.01;
         translateYvalue -= 0.2;
 

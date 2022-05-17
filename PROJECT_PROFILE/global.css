@@ -1,5 +1,7 @@
 @charset "UTF-8"; 
 
+
+
 .global-nav{
     height: 100px;
     /* background-color: #fdfdfd; */
@@ -14,7 +16,7 @@
     align-items: center; */
 
     /* 너비 및 마진설정 */
-    max-width: 750px;
+    max-width: 1000px;
     margin: 0 auto;
     height: 100%;
     line-height: 48px;
@@ -37,11 +39,12 @@
     color: #1d1d1f;
     font-size: 2rem;
     font-weight: 900;
-    -webkit-transition-duration: 0.2s; /* Safari */
-    transition-duration: 0.2;
+    /* -webkit-transition-duration: 0.1s; Safari */
+    /* transition-duration: 0.1; */
 }
 
 #id_global_home_title:hover{
+    text-decoration: underline #CCF3EE;
     color: #CCF3EE;
 }
 

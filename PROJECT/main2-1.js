@@ -365,7 +365,7 @@ window.addEventListener('scroll', ()=>{
 
 
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
     intv = setInterval(animi, 10)
 })
     

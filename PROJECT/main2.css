@@ -34,8 +34,8 @@ h1 {
     top : 0;
     width: 100%;
 
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    border-top: 1px solid rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(255, 255, 255);
     
 }
 
@@ -48,8 +48,13 @@ h1 {
     /* 너비 및 마진설정 */
     max-width: 1000px;
     margin: 0 auto;
-    height: 100%   
+    height: 100%;
+    
+}
 
+.global-nav-links a,
+.local-nav-links a{
+    color: white;
 }
 
 .local-nav {
@@ -58,7 +63,7 @@ h1 {
     top : 45px;
     width: 100%;
     height: 44px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(255, 255, 255);
     
 }
 
