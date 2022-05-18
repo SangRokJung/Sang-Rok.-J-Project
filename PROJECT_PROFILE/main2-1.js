@@ -76,13 +76,13 @@
         {
             type : 'normal',
             height : 0,
-            multiple : 2,            
+            multiple : 1,            
             objs : {
                 container : document.querySelector('#section-2'),
                 seriseMsgA : document.querySelector('#fadein-items4'),
             },
             values : {
-                MessageA_opacity : [0, 1, {start : 0.5, end : 0.59}],
+                MessageA_opacity_in : [0, 1, {start : 0.05, end : 0.15}],
                 MessageA_translateX : [500, 0, {start : 0.5, end : 0.59}]
             }
 
@@ -325,9 +325,9 @@
             break;
 
             case 2 : 
-            console.log('case2')
+                console.log('case2')
                 console.log('offsetrate = ' + offsetRate)
-                if (offsetRate < 0.1) {
+                if (offsetRate <= 0.05) {
                     sectionSet[currentSection - 1].objs.seriseMsgA.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.seriseMsgB.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.seriseMsgC.style.display = `${'none'}`;
@@ -337,16 +337,17 @@
                     sectionSet[currentSection - 1].objs.seriseMsgC.style.opacity = `${0}`;
                     
                     sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
-                }
-                else if (offsetRate >= 0.5 && offsetRate <= 0.59) {
 
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity)
-                    tsXinVal = calcValue(sectionSet[currentSection].values.MessageA_translateX)
+                }
+                else if (offsetRate >= 0.05 && offsetRate <= 0.15) {
+
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
-                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateX(${tsXinVal}px)`;
+                    // tsXinVal = calcValue(sectionSet[currentSection].values.MessageA_translateX);
+                    // // sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateX(${tsXinVal}px)`;
                 }
-                else if (offsetRate > 0.59) {
-
+                else if (offsetRate > 0.18) {
+                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`;
                 }
 
             break;

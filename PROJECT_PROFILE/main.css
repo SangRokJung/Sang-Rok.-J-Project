@@ -413,9 +413,9 @@ a {
 
     position: fixed;
 
-    top: 350px;
+    top: 410px;
     text-align: left;
-    height: 304px;
+    height: 650px;
     justify-content: space-between;
     align-content: flex-start;
 }
@@ -438,15 +438,14 @@ a {
 #links_div2,
 #links_div3{
     display: flex;
-    width: 300px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    align-items: center;
+    width: 842px;
+    flex-direction: column;
+    align-items: flex-end;
+    
 }
 
 #fadein-items4{
-    padding-top: 1771px;
+    padding-top: 480px;
 }
 
 #fadein-items4 p{
@@ -455,4 +454,16 @@ a {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 
     color: #1d1d1f;
+}
+
+#links_div1-1,
+#links_div1-2,
+#links_div1-3,
+#links_div1-4,
+#links_div1-5{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
