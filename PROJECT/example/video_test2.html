@@ -18,19 +18,26 @@
         }
     </style>
     <script>
-        window.addEventListener('load', () => {
-            const elmVideo = document.querySelector('.main-video')
-            let rate       = 0;
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            window.addEventListener('load', () => {
+                const elmVideo = document.querySelector('.main-video')
+                let rate       = 0;
 
-            window.addEventListener('scroll', () => {
-                rate = scrollY / (document.body.offsetHeight - window.innerHeight);
+                    document.body.clientHeight
 
-                if (rate > 1) {
-                    rate = 1;
-                }
-                elmVideo.currentTime = elmVideo.duration * rate;
-            })
-        });
+                window.addEventListener('scroll', () => {
+                    rate = scrollY / (document.body.offsetHeight - window.innerHeight);
+
+                    if (rate > 1) {
+                        rate = 1;
+                    }
+                    elmVideo.currentTime = elmVideo.duration * rate;
+                })
+            });
+        })
+
+
     </script>
 </head>
 <body>

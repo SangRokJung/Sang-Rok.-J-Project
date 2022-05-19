@@ -34,12 +34,30 @@
             objs : {
                 container : document.querySelector('#section-0'),
                 seriseMsgA : document.querySelector('.fadein-items0'),
-                seriseVdieoA : document.querySelector('#div_id_main_vidieo')
+                seriseVdieoA : document.querySelector('#div_id_main_vidieo'),
+                serisePhotoA : document.querySelector('#id_main_phto1'),
+                serisePhotoB : document.querySelector('#id_main_phto2'),
+                serisePhotoC : document.querySelector('#id_main_phto3'),
+                serisePhotoD : document.querySelector('#id_main_phto4'),
+                
             },
             // section에서 사용하는 값들을 저장.
             values : {
                 MessageA_opacity : [0, 1],
-                // VideioA_opacity : [0, 1]
+
+                seriseMsgA_opacityOut : [1, 0, {start : 0.4, end : 0.5}],
+
+                serisePhotoA_opacityIn : [0, 1, {start : 0.5, end : 0.6}],
+                serisePhotoA_opacityOut : [1, 0, {start : 0.6, end : 0.7}],
+
+                serisePhotoB_opacityIn : [0, 1, {start : 0.6, end : 0.7}],
+                serisePhotoB_opacityOut : [1, 0, {start : 0.7, end : 0.8}],
+
+                serisePhotoC_opacityIn : [0, 1, {start : 0.7, end : 0.8}],
+                serisePhotoC_opacityOut : [1, 0, {start : 0.8, end : 0.9}],
+
+                serisePhotoD_opacityIn : [0, 1, {start : 0.8, end : 0.9}],
+                serisePhotoD_opacityOut : [1, 0, {start : 0.9, end : 1}],
             }
 
         },
@@ -51,6 +69,7 @@
             multiple : 7,
             objs : {
                 container : document.querySelector('#section-1'),
+                seriseMsgIntro : document.querySelector('#id_title0'),
                 seriseMsgA : document.querySelector('.fadein-items1'),
                 seriseUlA : document.querySelector('.history'),
                 seriseMsgB : document.querySelector('.fadein-items2'),
@@ -58,6 +77,9 @@
 
             },
             values : {
+                MessageIntro_opacity_in : [0, 1, {start : 0, end : 0.05}],
+                MessageIntro_opacity_out : [1, 0, {start : 0.05, end : 0.1}],
+
                 MessageA_opacity_in : [0, 1, {start : 0.1, end : 0.25}],
                 MessageA_opacity_out : [1, 0, {start : 0.25, end : 0.4}],
 
@@ -254,22 +276,117 @@
 
         switch(currentSection){
             case 0 : 
+                if (offsetRate < 0.1) {
+                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`
+                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`
+                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${0}`
+                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${0}`
+
+                    sectionSet[currentSection].objs.serisePhotoA.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoB.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoC.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoD.style.display = `${'block'}`;
+                }
+                else if(offsetRate >= 0.3 && offsetRate <= 0.4) {
+
+                }
+                else if(offsetRate >= 0.4 && offsetRate <= 0.5) {
+                    opOutval = calcValue(sectionSet[currentSection].values.seriseMsgA_opacityOut);
+                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`
+                    sectionSet[currentSection].objs.seriseVdieoA.style.opacity = `${opOutval}`
+
+                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`
+
+
+                }
+                else if(offsetRate >= 0.5 && offsetRate <= 0.6){
+                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoA_opacityIn);
+                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${opInVal}`;
+
+                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`;
+                }
+                else if(offsetRate >= 0.6 && offsetRate <= 0.7){
+                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoA_opacityOut);
+                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${opOutval}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoB_opacityIn);
+                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${opInVal}`;
+                }
+                else if(offsetRate >= 0.7 && offsetRate <= 0.8){
+                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoB_opacityOut);
+                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${opOutval}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoC_opacityIn);
+                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${opInVal}`;
+
+                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${0}`;
+
+                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`;
+                }
+                else if(offsetRate >= 0.8 && offsetRate <= 0.9){
+                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoC_opacityOut);
+                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${opOutval}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoD_opacityIn);
+                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${opInVal}`;
+
+                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`;
+
+                }
+                else if(offsetRate >= 0.9 && offsetRate <= 1){
+                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoD_opacityOut);
+                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${opOutval}`;
+
+                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${0}`;
+
+                    sectionSet[currentSection].objs.serisePhotoA.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoB.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoC.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.serisePhotoD.style.display = `${'block'}`;
+
+                    sectionSet[currentSection + 1].objs.seriseMsgIntro.style.opacity = `${opInVal}`;
+                    sectionSet[currentSection + 1].objs.seriseMsgIntro.style.display = `${'none'}`;
+                }
+
                 //section1 Object diplay SET
                 sectionSet[currentSection + 1].objs.seriseMsgA.style.display = `${'none'}`;
                 sectionSet[currentSection + 1].objs.seriseUlA.style.display = `${'none'}`;
                 sectionSet[currentSection + 1].objs.seriseMsgB.style.display = `${'none'}`;
                 sectionSet[currentSection + 1].objs.seriseMsgC.style.display = `${'none'}`;
+
                 break;
 
             case 1 : 
-                if (offsetRate < 0.1) {
+                if (offsetRate >= 0 && offsetRate <= 0.05) {
+                    sectionSet[currentSection - 1].objs.serisePhotoA.style.opacity = `${0}`
+                    sectionSet[currentSection - 1].objs.serisePhotoB.style.opacity = `${0}`
+                    sectionSet[currentSection - 1].objs.serisePhotoC.style.opacity = `${0}`
+                    sectionSet[currentSection - 1].objs.serisePhotoD.style.opacity = `${0}`
+                    sectionSet[currentSection - 1].objs.serisePhotoA.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoB.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoC.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoD.style.display = `${'none'}`;
+
+
                     //opacity RESET
                     opOutval = 0;
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
+
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'block'}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_in)
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opInVal}`;
+                }
+                else if(offsetRate >= 0.05 && offsetRate <= 0.1) {
+                    opOutval = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_out)
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opOutval}`;
+
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.25) {
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'none'}`;
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${0}`;
                     sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
                     opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in)
 
@@ -331,6 +448,7 @@
                     sectionSet[currentSection - 1].objs.seriseMsgA.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.seriseMsgB.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.seriseMsgC.style.display = `${'none'}`;
+                    sectionSet[currentSection - 1].objs.seriseMsgIntro.style.display = `${'none'}`;
 
                     sectionSet[currentSection - 1].objs.seriseMsgA.style.opacity = `${0}`;
                     sectionSet[currentSection - 1].objs.seriseMsgB.style.opacity = `${0}`;
@@ -348,6 +466,7 @@
                 }
                 else if (offsetRate > 0.18) {
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`;
+
                 }
 
             break;
