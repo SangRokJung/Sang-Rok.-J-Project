@@ -24,6 +24,7 @@ h1 {
     font-size: 5rem;
     text-align: center;
     margin : 2.5em auto;
+    color :azure;
 
 }
 
@@ -34,8 +35,8 @@ h1 {
     top : 0;
     width: 100%;
 
-    border-top: 1px solid rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
     
 }
 
@@ -48,8 +49,8 @@ h1 {
     /* 너비 및 마진설정 */
     max-width: 1000px;
     margin: 0 auto;
-    height: 100%;
-    
+    height: 100%   
+
 }
 
 .local-nav {
@@ -58,7 +59,7 @@ h1 {
     top : 45px;
     width: 100%;
     height: 44px;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid black;
     
 }
 
@@ -84,12 +85,34 @@ h1 {
 }
 
 
+
+.episode {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 2rem;
+    
+
+}
+
+.episode strong {
+    font-size: 3rem;
+    float: left;
+    margin-right: 0.5em;
+    
+}
+
+.scroll-section {
+
+    border: 1px solid black;
+}
+
 .serise-message {
     display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
-    
+
+    color:aliceblue;
     font-size: 2.5rem;
     font-weight: bold;
     height:4em;
@@ -98,23 +121,6 @@ h1 {
 
 }
 
-.episode {
-    width: 1000px;
-    margin: 0 auto;
-    font-size: 2rem;
-
-}
-
-.episode strong {
-    font-size: 3rem;
-    float: left;
-    margin-right: 0.5em;
-
-}
-
-.scroll-section {
-    border: 1px solid black;
-}
 
 .sticky-elem {
     display: none;
@@ -125,21 +131,25 @@ h1 {
 }
 
 .sticky-elem-canvas {
-    position: fixed;     
+    position: fixed;
     left: 0;
-    top : 0;    
-    width:100%;
+    top: 0;
+    width: 100%;
     z-index: -1;
-    background-color: antiquewhite;
+
+
 }
 
 #show-section-0 #section-0 .sticky-elem,
-#show-section-2 #section-2 .sticky-elem{
+#show-section-2 #section-2 .sticky-elem
+{
     display: block;
 }
 
-#show-section-1 #section-0 .sticky-elem-canvas,
-#show-section-2 #section-2 .sticky-elem-canvas{
-    display: none;
-}
 
+#show-section-1 #section-0 .sticky-elem-canvas,
+#show-section-2 #section-0 .sticky-elem-canvas
+{
+    display: none;
+
+}

@@ -278,15 +278,7 @@
         switch(currentSection){
             case 0 : 
                 if (offsetRate < 0.1) {
-                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`
-                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`
-                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${0}`
-                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${0}`
 
-                    sectionSet[currentSection].objs.serisePhotoA.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoB.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoC.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoD.style.display = `${'block'}`;
                 }
                 else if(offsetRate >= 0.3 && offsetRate <= 0.4) {
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`

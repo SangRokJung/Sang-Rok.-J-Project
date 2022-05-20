@@ -26,6 +26,10 @@
             // section에서 사용하는 element들을 저장.
             objs : {
                 container : document.querySelector('#section-0'),
+                mainCanvas : document.querySelector('#main-canvas'),
+                constext : document.querySelector('#main-canvas').getContext('2d'),
+                canvasImages : [],
+
                 seriseMsgA : document.querySelector('.serise-message.a'),
                 seriseMsgB : document.querySelector('.serise-message.b'),
                 seriseMsgC : document.querySelector('.serise-message.c'),
@@ -33,6 +37,10 @@
             },
             // section에서 사용하는 값들을 저장.
             values : {
+                imageCount : 166,
+                imageSequence : [0, 165],
+
+
                 MessageA_opacity_in : [0, 1, {start : 0.1, end : 0.2}],
                 MessageA_opacity_out : [1, 0, {start : 0.2, end : 0.3}],
                 MessageA_translateY_in : [0, -50, {start : 0.1, end : 0.2}],
@@ -55,9 +63,7 @@
 
                 // 메세지 A의 불투명도를 0에서 1까지
                 // 0.1(10%)지점 부터 0.2 지점까지 애니메이션 한다.
-                
             }
-
         },
         
         // section-1
@@ -73,7 +79,6 @@
             values : {
 
             }
-
         },
 
         // section-2
@@ -108,9 +113,19 @@
             sectionSet[i].objs.container.style.height = `${sectionSet[i].height}px`;
 
         }
+        //이미지를 불러온다.
+        let eleImage = 0;
+        for (let i = 0; i < sectionSet[0].values.imageCount; i++) {
+            eleImage = new Image();
+            
+            eleImage.src = `./capture/DS_${i}.png`;
+            canvasImages.push(eleImage);
+
+            sectionSet[0].objs.canvasImages.push();
+        }
     }    
 
-    // yOffset에 따라 현재 보고있는 Section을 설정한다.\
+    // yOffset에 따라 현재 보고있는 Section을 설정한다.
     // 스크롤이 일어날때 실행되어야 한다.
     const getCurrentSection = function()
     {   
@@ -154,7 +169,6 @@
         initSectionSet();
 
         // 기타 전역변수들도 초기화.
-        yOffset = 0;
 
     }
 
@@ -252,39 +266,47 @@
         let tsYinVal = 0;
         let tsYoutValue = 0;
 
+        let imageIndex = 0;
+
+        const cs = sectionSet[currentSection];
+
         const offsetRate = sectionYOffset / sectionSet[currentSection].height;
         console.log('offsetRate = ' + offsetRate)
 
         switch(currentSection){
             case 0 : 
+                // 이미지 인덱스 0~165 출력
+                imageIndex = Math.round(calcValue(cs.values.imageSequence));
+                cs.objs.constext.drawImage(cs.objs.canvasImages[imageIndex], 0, 0)
+
                 if (offsetRate < 0.1) {
                     opOutval = 0
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseMsgD.style.opacity = `${opOutval}`;
+                    cs.objs.seriseMsgA.style.opacity = `${opOutval}`;
+                    cs.objs.seriseMsgB.style.opacity = `${opOutval}`;
+                    cs.objs.seriseMsgC.style.opacity = `${opOutval}`;
+                    cs.objs.seriseMsgD.style.opacity = `${opOutval}`;
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.2) {
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in);
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
+                    opInVal = calcValue(cs.values.MessageA_opacity_in);
+                    cs.objs.seriseMsgA.style.opacity = `${opInVal}`;
 
-                    tsYinVal = calcValue(sectionSet[currentSection].values.MessageA_translateY_in);
-                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateY(${tsYinVal}px)`;
+                    tsYinVal = calcValue(cs.values.MessageA_translateY_in);
+                    cs.objs.seriseMsgA.style.transform = `translateY(${tsYinVal}px)`;
                 }
                 else if (offsetRate >= 0.2 && offsetRate <= 0.3) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageA_opacity_out)
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
+                    opOutval = calcValue(cs.values.MessageA_opacity_out)
+                    cs.objs.seriseMsgA.style.opacity = `${opOutval}`;
 
-                    tsYoutValue = calcValue(sectionSet[currentSection].values.MessageA_translateY_out);
-                    sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateY(${tsYoutValue}px)`;
+                    tsYoutValue = calcValue(cs.values.MessageA_translateY_out);
+                    cs.objs.seriseMsgA.style.transform = `translateY(${tsYoutValue}px)`;
 
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${0}`;
+                    cs.objs.seriseMsgB.style.opacity = `${0}`;
                 }
                 else if (offsetRate >= 0.3 && offsetRate <= 0.4) {
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${0}`;
+                    cs.objs.seriseMsgA.style.opacity = `${0}`;
 
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageB_opacity_in);
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opInVal}`;
+                    opInVal = (cs.values.MessageB_opacity_in);
+                    cs.objs.seriseMsgB.style.opacity = `${opInVal}`;
 
                     tsYinVal = calcValue(sectionSet[currentSection].values.MessageB_translateY_in);
                     sectionSet[currentSection].objs.seriseMsgB.style.transform = `translateY(${tsYinVal}px)`;

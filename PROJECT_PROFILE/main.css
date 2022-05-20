@@ -227,7 +227,7 @@ a {
     width: 286px;
     left: -6px;
     position: relative;
-    height: 183px;
+    height: 161px;
     font-size: 18px;
     text-align: left;
     padding-left: 48px;
@@ -418,10 +418,10 @@ a {
     flex-direction: column;
 
     position: fixed;
-
-    top: 410px;
+    top: 360px;
     text-align: left;
-    height: 650px;
+    height: 470px;
+
     justify-content: space-between;
     align-content: flex-start;
 }
@@ -544,8 +544,30 @@ a {
     font-weight: 700;
     color: #1d1d1f;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    max-width: 531px;
+    max-width: 435px;
     display: block;
     position: fixed;
     top: 368px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+#id_color{
+    color: #CCF3EE;
+    position: fixed;
+    top: 571px;
+}
+
+#fadein-items5{
+    padding-top: 15px;
+}
+
+
+#fadein-items5 p{
+    font-size: 25px;
+    /* font-weight: 700; */
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #1d1d1f;
 }
