@@ -143,3 +143,11 @@
     Menu Switcher 생성
         Menu Switcher가 switcher 될 때 해당 section으로 이동하는 로직으로 설계하고자 한다.
 
+[0520]
+- 메인 페이지
+- 이력서 페이지
+    Menu Switcher Visaul 변경
+    global itmes position sticky 설정
+
++ 상단 올림 버튼 기능 오류 개선 필요
+
