@@ -466,6 +466,7 @@ a {
 #links_div1-3,
 #links_div1-4,
 #links_div1-5,
+#links_div2-1,
 #links_div3-1{
     width: 100%;
     display: flex;
@@ -480,6 +481,7 @@ a {
 #links_div1-3 a,
 #links_div1-4 a,
 #links_div1-5 a,
+#links_div2-1 a,
 #links_div3-1 a{
     cursor: pointer;
     margin-left: 5px;
@@ -489,7 +491,7 @@ a {
     line-height: 1.4;
     font-size: 14px;
     font-weight: 400;
-    min-width: 23px;
+    min-width: 1px;
     padding-left: 11px;
     padding-right: 11px;
     padding-top: 4px;
@@ -503,6 +505,7 @@ a {
 #links_div1-3 a:hover,
 #links_div1-4 a:hover,
 #links_div1-5 a:hover,
+#links_div2-1 a:hover,
 #links_div3-1 a:hover{
     background-color: #89a3bd;
     color: #fff;

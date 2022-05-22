@@ -33,12 +33,6 @@
             // section에서 사용하는 element들을 저장.
             objs : {
                 container : document.querySelector('#section-0'),
-                seriseMsgA : document.querySelector('.fadein-items0'),
-                seriseVdieoA : document.querySelector('#div_id_main_vidieo'),
-                serisePhotoA : document.querySelector('#id_main_phto1'),
-                serisePhotoB : document.querySelector('#id_main_phto2'),
-                serisePhotoC : document.querySelector('#id_main_phto3'),
-                serisePhotoD : document.querySelector('#id_main_phto4'),
                 
             },
             // section에서 사용하는 값들을 저장.
@@ -46,18 +40,6 @@
                 MessageA_opacity : [0, 1],
 
                 seriseMsgA_opacityOut : [1, 0, {start : 0.4, end : 0.5}],
-
-                serisePhotoA_opacityIn : [0, 1, {start : 0.5, end : 0.6}],
-                serisePhotoA_opacityOut : [1, 0, {start : 0.6, end : 0.7}],
-
-                serisePhotoB_opacityIn : [0, 1, {start : 0.6, end : 0.7}],
-                serisePhotoB_opacityOut : [1, 0, {start : 0.7, end : 0.8}],
-
-                serisePhotoC_opacityIn : [0, 1, {start : 0.7, end : 0.8}],
-                serisePhotoC_opacityOut : [1, 0, {start : 0.8, end : 0.9}],
-
-                serisePhotoD_opacityIn : [0, 1, {start : 0.8, end : 0.9}],
-                serisePhotoD_opacityOut : [1, 0, {start : 0.9, end : 1}],
             }
 
         },

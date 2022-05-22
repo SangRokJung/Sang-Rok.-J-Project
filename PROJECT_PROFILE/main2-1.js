@@ -277,6 +277,7 @@
 
         switch(currentSection){
             case 0 : 
+                console.log('window.scrollY = ' + window.scrollY)
                 if (offsetRate < 0.1) {
                     sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`
                     sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`
