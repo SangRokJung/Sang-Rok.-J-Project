@@ -21,6 +21,7 @@
             Menu Switcher가 switcher 될 때 해당 section으로 이동하는 로직으로 설계하고자 한다.
             Menu Switcher는 sticky
                 학력, 외부 활동, 아르바이트 이력 +, 프로젝트 진행
+            
 
 [0512]
 - 메인 페이지 JS
@@ -143,7 +144,7 @@
     Menu Switcher 생성
         Menu Switcher가 switcher 될 때 해당 section으로 이동하는 로직으로 설계하고자 한다.
 
-[0520]
+[0521]
 - 메인 페이지
 - 이력서 페이지
     Menu Switcher Visaul 변경
@@ -151,9 +152,21 @@
 
 + 상단 올림 버튼 기능 오류 개선 필요
 
-[0521]
+[0522]
     상단 올림 버튼 기능 개선
 - 메인 페이지
     java part a tag 추가
 - 이력서 페이지
+
+[0523]
+- 메인 페이지
+    section 1 CS part 생성, java part 추가
+    section 1 중요한것만 임팩트 있고 간결하게 edit
+- 이력서 페이지
+    gobal section sticky set.
+    스크롤시 애니메이션 생성
+
++ 메뉴 스위치 기능 생성
++ section 1 Learn에 마우스 포인터 가지고 가면 블로그 이미지 보이게하기
++ 깃허브 그린트리 보이게 하기
 

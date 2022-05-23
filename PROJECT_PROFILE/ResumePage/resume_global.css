@@ -9,7 +9,7 @@
     border-bottom: #333333;
 
     position: sticky;
-    top: -9px;
+    top: 0px;
     left: 0px;
 }
 
@@ -92,4 +92,36 @@
     position: sticky;
     top: 101px;
     left: 0px;
+}
+
+#id_main_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1000px;
+    top: 73px;
+    position: relative;
+}
+
+#id_main_title h1{
+    font-size: 6rem;
+    color:  #1d1d1f;
+}
+
+#id_main_title h2{
+    font-size: 6rem;
+    color:  #CCF3EE;
+}
+
+#local-nav-item-1{
+    opacity: 0;
+}
+
+#id_season{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 1000px;
+    top: 73px;
+    position: relative;
 }

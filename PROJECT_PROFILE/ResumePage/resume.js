@@ -15,6 +15,7 @@
 
     let opctValue = 0;
     let tslYValue = 0;
+    let tslXValue = 300;
 
 
     const sectionSet = [
@@ -33,13 +34,16 @@
             // section에서 사용하는 element들을 저장.
             objs : {
                 container : document.querySelector('#section-0'),
+                switcher : document.querySelector('#local-nav-item-1'),
+                mainTitle : document.querySelector('#id_main_title'),
                 
             },
             // section에서 사용하는 값들을 저장.
             values : {
-                MessageA_opacity : [0, 1],
+                switcher_opacity_in : [0, 1, {start : 0.13, end : 0.2}],
 
-                seriseMsgA_opacityOut : [1, 0, {start : 0.4, end : 0.5}],
+                mainTitle_opacity_out : [1, 0, {start : 0.13, end : 0.2}],
+
             }
 
         },
@@ -48,30 +52,15 @@
         {
             type : 'sticky',
             height : 0,
-            multiple : 7,
+            multiple : 2,
             objs : {
                 container : document.querySelector('#section-1'),
-                seriseMsgIntro : document.querySelector('#id_title0'),
-                seriseMsgA : document.querySelector('.fadein-items1'),
-                seriseUlA : document.querySelector('.history'),
-                seriseMsgB : document.querySelector('.fadein-items2'),
-                seriseMsgC : document.querySelector('.fadein-items3'),
 
             },
             values : {
                 MessageIntro_opacity_in : [0, 1, {start : 0, end : 0.05}],
                 MessageIntro_opacity_out : [1, 0, {start : 0.05, end : 0.1}],
 
-                MessageA_opacity_in : [0, 1, {start : 0.1, end : 0.25}],
-                MessageA_opacity_out : [1, 0, {start : 0.25, end : 0.4}],
-
-
-                MessageB_opacity_in : [0, 1, {start : 0.4, end : 0.55}],
-                MessageB_opacity_out : [1, 0, {start : 0.55, end : 0.7}],
-                seriseUlA_translateY_in : [0, -30, {start : 0.4, end : 0.55}],
-
-                MessageC_opacity_in : [0, 1, {start : 0.7, end : 0.85}],
-                MessageC_opacity_out : [1, 0, {start : 0.85, end : 1.0}],
             }
 
         },
@@ -80,15 +69,14 @@
         {
             type : 'normal',
             height : 0,
-            multiple : 1,            
+            multiple : 2,            
             objs : {
                 container : document.querySelector('#section-2'),
-                seriseMsgA : document.querySelector('#fadein-items4'),
-                seriseMsgB : document.querySelector('#fadein-items5'),
+
             },
             values : {
-                MessageA_opacity_in : [0, 1, {start : 0.05, end : 0.15}],
-                MessageA_translateX : [500, 0, {start : 0.5, end : 0.59}]
+                // MessageA_opacity_in : [0, 1, {start : 0.05, end : 0.15}],
+                // MessageA_translateX : [500, 0, {start : 0.5, end : 0.59}]
             }
 
         }        
@@ -257,195 +245,38 @@
         const offsetRate = sectionYOffset / sectionSet[currentSection].height;
         console.log('offsetRate = ' + offsetRate)
 
+        let secObj = sectionSet[currentSection].objs
+
         switch(currentSection){
             case 0 : 
-                if (offsetRate < 0.1) {
+                console.log('case0')
+                if(offsetRate < 0.1) {
+                    secObj.mainTitle.style.opacity = `${1}`;
+                    secObj.switcher.style.opacity = `${0}`;
+                    secObj.switcher.style.cursor = 'default';
+                }
+                else if (offsetRate > 0.13 && offsetRate < 0.2) {
+                    secObj.switcher.style.cursor = 'default';
+                    opOutval = calcValue(sectionSet[currentSection].values.mainTitle_opacity_out);
+                    secObj.mainTitle.style.opacity = `${opOutval}`;
+
+                    opInVal = calcValue(sectionSet[currentSection].values.switcher_opacity_in);
+                    secObj.switcher.style.opacity = `${opInVal}`;
 
                 }
-                else if(offsetRate >= 0.3 && offsetRate <= 0.4) {
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`
-                    sectionSet[currentSection].objs.seriseVdieoA.style.opacity = `${1}`
+                else if (offsetRate > 0.2 && offsetRate < 0.3) {
+                    secObj.switcher.style.cursor = 'pointer';
+                    secObj.mainTitle.style.opacity = `${0}`;
+                    // secObj.mainTitle.style.display = 'none'
                 }
-                else if(offsetRate >= 0.4 && offsetRate <= 0.5) {
-                    opOutval = calcValue(sectionSet[currentSection].values.seriseMsgA_opacityOut);
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`
-                    sectionSet[currentSection].objs.seriseVdieoA.style.opacity = `${opOutval}`
-
-                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`
-
-
-                }
-                else if(offsetRate >= 0.5 && offsetRate <= 0.6){
-                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoA_opacityIn);
-                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${opInVal}`;
-
-                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`;
-                }
-                else if(offsetRate >= 0.6 && offsetRate <= 0.7){
-                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoA_opacityOut);
-                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${opOutval}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoB_opacityIn);
-                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${opInVal}`;
-                }
-                else if(offsetRate >= 0.7 && offsetRate <= 0.8){
-                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoB_opacityOut);
-                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${opOutval}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoC_opacityIn);
-                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${opInVal}`;
-
-                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${0}`;
-
-                    sectionSet[currentSection].objs.serisePhotoA.style.opacity = `${0}`;
-                }
-                else if(offsetRate >= 0.8 && offsetRate <= 0.9){
-                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoC_opacityOut);
-                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${opOutval}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.serisePhotoD_opacityIn);
-                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${opInVal}`;
-
-                    sectionSet[currentSection].objs.serisePhotoB.style.opacity = `${0}`;
-
-                }
-                else if(offsetRate >= 0.9 && offsetRate <= 1){
-                    opOutval = calcValue(sectionSet[currentSection].values.serisePhotoD_opacityOut);
-                    sectionSet[currentSection].objs.serisePhotoD.style.opacity = `${opOutval}`;
-
-                    sectionSet[currentSection].objs.serisePhotoC.style.opacity = `${0}`;
-
-                    sectionSet[currentSection].objs.serisePhotoA.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoB.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoC.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.serisePhotoD.style.display = `${'block'}`;
-
-                    sectionSet[currentSection + 1].objs.seriseMsgIntro.style.opacity = `${opInVal}`;
-                    sectionSet[currentSection + 1].objs.seriseMsgIntro.style.display = `${'none'}`;
-                }
-
-                //section1 Object diplay SET
-                sectionSet[currentSection + 1].objs.seriseMsgA.style.display = `${'none'}`;
-                sectionSet[currentSection + 1].objs.seriseUlA.style.display = `${'none'}`;
-                sectionSet[currentSection + 1].objs.seriseMsgB.style.display = `${'none'}`;
-                sectionSet[currentSection + 1].objs.seriseMsgC.style.display = `${'none'}`;
-
-                break;
+            break;
 
             case 1 : 
-                if (offsetRate >= 0 && offsetRate <= 0.05) {
-                    sectionSet[currentSection - 1].objs.serisePhotoA.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoB.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoC.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoD.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoA.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.serisePhotoB.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.serisePhotoC.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.serisePhotoD.style.display = `${'none'}`;
-
-
-                    //opacity RESET
-                    opOutval = 0;
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
-
-                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'flex'}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_in)
-                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opInVal}`;
-                }
-                else if(offsetRate >= 0.05 && offsetRate <= 0.1) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_out)
-                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opOutval}`;
-
-                }
-                else if (offsetRate >= 0.1 && offsetRate <= 0.25) {
-                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'none'}`;
-                    sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${0}`;
-                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in)
-
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
-                    
-                }
-                else if (offsetRate >= 0.25 && offsetRate <= 0.4) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageA_opacity_out)
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opOutval}`;
-
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${0}`;
-                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${0}`;
-                }
-                else if (offsetRate >= 0.4 && offsetRate <= 0.55) {
-                    sectionSet[currentSection].objs.seriseUlA.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'none'}`;
-                    
-                    sectionSet[currentSection].objs.seriseMsgB.style.display = `${'block'}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageB_opacity_in)
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opInVal}`;
-
-                    sectionSet[currentSection].objs.seriseUlA.style.opacity = `${opInVal}`;
-
-                    tsYinVal = calcValue(sectionSet[currentSection].values.seriseUlA_translateY_in)
-                    sectionSet[currentSection].objs.seriseUlA.style.transform = `translateY(${tsYinVal}px)`;
-
-                }
-                else if (offsetRate >= 0.55 && offsetRate <= 0.7) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageB_opacity_out)
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opOutval}`;
-                    sectionSet[currentSection].objs.seriseUlA.style.opacity = `${opOutval}`;
-                }
-                else if (offsetRate >= 0.7 && offsetRate <= 0.85) {
-                    sectionSet[currentSection].objs.seriseMsgB.style.display = `${'none'}`;
-                    sectionSet[currentSection].objs.seriseMsgC.style.display = `${'block'}`;
-                    sectionSet[currentSection].objs.seriseUlA.style.display = `${'none'}`;
-
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageC_opacity_in)
-                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opInVal}`;
-                }
-                else if (offsetRate >= 0.85 && offsetRate <= 1) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageC_opacity_out)
-                    sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${opOutval}`;
-                }
-                else{
-                }
-            //1. 스크롤 값을 기반으로 opacity 범위를 계산한다.
-            // opVal = calcValue(sectionSet[currentSection].values.MessageA_opacity)
-            
-            //2. CSS에 적용한다.
-            // sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opVal}`;
+                console.log('case1')
             break;
 
             case 2 : 
                 console.log('case2')
-                console.log('offsetrate = ' + offsetRate)
-                if (offsetRate <= 0.05) {
-                    sectionSet[currentSection - 1].objs.seriseMsgA.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.seriseMsgB.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.seriseMsgC.style.display = `${'none'}`;
-                    sectionSet[currentSection - 1].objs.seriseMsgIntro.style.display = `${'none'}`;
-
-                    sectionSet[currentSection - 1].objs.seriseMsgA.style.opacity = `${0}`;
-                    sectionSet[currentSection - 1].objs.seriseMsgB.style.opacity = `${0}`;
-                    sectionSet[currentSection - 1].objs.seriseMsgC.style.opacity = `${0}`;
-                    
-                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
-
-                }
-                else if (offsetRate >= 0.05 && offsetRate <= 0.15) {
-
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in);
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
-                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${opInVal}`;
-                    // tsXinVal = calcValue(sectionSet[currentSection].values.MessageA_translateX);
-                    // // sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateX(${tsXinVal}px)`;
-                }
-                else if (offsetRate > 0.18) {
-                    sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`;
-
-                }
-
             break;
         }
     }
@@ -461,20 +292,20 @@
         console.log('WINDOW Loading EVENT START')
 
         if (opctValue < 0.93){
-            opctValue += 0.01;
-            tslYValue -= 0.5;
-            sectionSet[0].objs.seriseMsgA.style.opacity = `${opctValue}`;
-            sectionSet[0].objs.seriseMsgA.style.transform = `translateY(${tslYValue}px)`
-            sectionSet[0].objs.seriseVdieoA.style.opacity = `${opctValue}`;
+            opctValue += 0.008;
+            tslXValue -= 2.5;
+
+            sectionSet[0].objs.mainTitle.style.transform = `translateX(${tslXValue}px)`
+            sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
         }
         else if (opctValue >= 0.93){
             console.log('WINDOW Loading EVENT END')
             opctValue = 1;
             clearInterval(intv);
-            sectionSet[0].objs.seriseMsgA.style.opacity = `${opctValue}`;
-            sectionSet[0].objs.seriseMsgA.style.transform = `translateY(${tslYValue}px)`
-            sectionSet[0].objs.seriseVdieoA.style.opacity = `${opctValue}`;
+
+            sectionSet[0].objs.mainTitle.style.transform = `translateX(${0}px)`
+            sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
 
             return
@@ -490,6 +321,7 @@
 //-------------------------------------------------------------------------
 
 window.addEventListener('scroll', ()=>{      
+    console.log('window.scrollY = ' + window.scrollY)
     // 스크롤 값
     // 현재 센셕
     // 이전 섹션의 높이
