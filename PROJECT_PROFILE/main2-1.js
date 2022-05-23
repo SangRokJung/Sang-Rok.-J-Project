@@ -74,6 +74,7 @@
                 seriseUlA : document.querySelector('.history'),
                 seriseMsgB : document.querySelector('.fadein-items2'),
                 seriseMsgC : document.querySelector('.fadein-items3'),
+                
 
             },
             values : {
@@ -361,10 +362,10 @@
 
             case 1 : 
                 if (offsetRate >= 0 && offsetRate <= 0.05) {
-                    sectionSet[currentSection - 1].objs.serisePhotoA.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoB.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoC.style.opacity = `${0}`
-                    sectionSet[currentSection - 1].objs.serisePhotoD.style.opacity = `${0}`
+                    sectionSet[currentSection - 1].objs.serisePhotoA.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoB.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoC.style.opacity = `${0}`;
+                    sectionSet[currentSection - 1].objs.serisePhotoD.style.opacity = `${0}`;
                     sectionSet[currentSection - 1].objs.serisePhotoA.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.serisePhotoB.style.display = `${'none'}`;
                     sectionSet[currentSection - 1].objs.serisePhotoC.style.display = `${'none'}`;
@@ -379,13 +380,12 @@
 
                     sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'flex'}`;
 
-                    opInVal = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_in)
+                    opInVal = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_in);
                     sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opInVal}`;
                 }
                 else if(offsetRate >= 0.05 && offsetRate <= 0.1) {
-                    opOutval = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_out)
+                    opOutval = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_out);
                     sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opOutval}`;
-
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.25) {
                     sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'none'}`;
@@ -534,7 +534,7 @@ window.addEventListener('scroll', ()=>{
 window.addEventListener('load', () => {
     intv = setInterval(animi, 10)
 })
-    
+
 
 //-------------------------------------------------------------------------
 // 함수 호출

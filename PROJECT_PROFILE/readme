@@ -160,13 +160,14 @@
 
 [0523]
 - 메인 페이지
-    section 1 CS part 생성, java part 추가
-    section 1 중요한것만 임팩트 있고 간결하게 edit
+    section 1 CS part 생성, java part 추가.
+    section 1 중요한것만 임팩트 있고 간결하게 edit.
+    section 1 Learn에 Mouse cursor 가지고 가면 블로그 이미지 보이는 에니메이션 추가
+
 - 이력서 페이지
     gobal section sticky set.
     스크롤시 애니메이션 생성
 
 + 메뉴 스위치 기능 생성
-+ section 1 Learn에 마우스 포인터 가지고 가면 블로그 이미지 보이게하기
 + 깃허브 그린트리 보이게 하기
 
