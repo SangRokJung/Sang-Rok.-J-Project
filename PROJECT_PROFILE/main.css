@@ -98,6 +98,7 @@ a {
 }
 
 #id_title_dot_1{
+    cursor: default;
     font-size: 50px;
     font-weight: 700;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
@@ -219,6 +220,7 @@ a {
     /* background-image: -webkit-image-set(url(./line.png) 1x, url(./line.png) 2x, url(./line.png) 3x); */
     background-position-x: 0;
     background-position-y: 2px;
+    height:1300px;
     
 }
 

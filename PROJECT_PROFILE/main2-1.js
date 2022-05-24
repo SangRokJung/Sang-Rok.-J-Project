@@ -74,8 +74,8 @@
                 seriseUlA : document.querySelector('.history'),
                 seriseMsgB : document.querySelector('.fadein-items2'),
                 seriseMsgC : document.querySelector('.fadein-items3'),
-                
 
+                seriseBlogImg : document.querySelector('#div_blog_img')
             },
             values : {
                 MessageIntro_opacity_in : [0, 1, {start : 0, end : 0.05}],
@@ -386,15 +386,24 @@
                 else if(offsetRate >= 0.05 && offsetRate <= 0.1) {
                     opOutval = calcValue(sectionSet[currentSection].values.MessageIntro_opacity_out);
                     sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${opOutval}`;
+
+
+
+                    sectionSet[currentSection].objs.seriseBlogImg.style.display = 'none'
                 }
                 else if (offsetRate >= 0.1 && offsetRate <= 0.25) {
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseUlA.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseMsgB.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseMsgC.style.display = 'none'
+
                     sectionSet[currentSection].objs.seriseMsgIntro.style.display = `${'none'}`;
                     sectionSet[currentSection].objs.seriseMsgIntro.style.opacity = `${0}`;
                     sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
                     opInVal = calcValue(sectionSet[currentSection].values.MessageA_opacity_in)
 
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${opInVal}`;
-                    
+
                 }
                 else if (offsetRate >= 0.25 && offsetRate <= 0.4) {
                     opOutval = calcValue(sectionSet[currentSection].values.MessageA_opacity_out)
@@ -402,8 +411,17 @@
 
                     sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${0}`;
                     sectionSet[currentSection].objs.seriseMsgC.style.opacity = `${0}`;
+
+                    sectionSet[currentSection].objs.seriseUlA.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseMsgB.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseMsgIntro.style.display = 'none'
+                    sectionSet[currentSection].objs.seriseMsgC.style.display = 'none'
                 }
                 else if (offsetRate >= 0.4 && offsetRate <= 0.55) {
+                    sectionSet[currentSection].objs.seriseBlogImg.style.display = 'none'
+
+                    
+
                     sectionSet[currentSection].objs.seriseUlA.style.display = `${'block'}`;
                     sectionSet[currentSection].objs.seriseMsgA.style.display = `${'none'}`;
                     

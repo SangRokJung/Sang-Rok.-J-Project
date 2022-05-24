@@ -29,21 +29,49 @@
             height : 0,
 
             // multiple : 스크롤 높이를 설정하기 위한 배수.
-            multiple : 1,
+            multiple : 3,
 
             // section에서 사용하는 element들을 저장.
             objs : {
                 container : document.querySelector('#section-0'),
                 switcher : document.querySelector('#local-nav-item-1'),
                 mainTitle : document.querySelector('#id_main_title'),
-                
+                mainTitle2 : document.querySelector('#id_main_title2'),
+                menuSwitcher : document.getElementById("menuSwitcher"),
+
+                titleSson : document.querySelector('#id_season'),
+                history1 : document.querySelector('#id_history'),
+
+                subImg : document.querySelector('#img_lotte'),
+                subVid : document.querySelector('#vid_nam'),
+
+                music : document.querySelector('#div_applemusic'),
+
+                //section2
+                titleSson2 : document.querySelector('#id_season-1'),
+                history2 : document.querySelector('#id_div_his_1')
             },
             // section에서 사용하는 값들을 저장.
             values : {
-                switcher_opacity_in : [0, 1, {start : 0.13, end : 0.2}],
+                mainTitle_opacity_out : [1, 0, {start : 0.01, end : 0.04}],
 
-                mainTitle_opacity_out : [1, 0, {start : 0.13, end : 0.2}],
+                switcher_opacity_in : [0, 1, {start : 0.05, end : 0.08}],
+                mainTitle2_opacity_out : [1, 0, {start : 0.05, end : 0.08}],
 
+                titleSson_op_out : [1, 0, {start : 0.33, end : 0.35}],
+                history1_op_out : [1, 0, {start : 0.35, end : 0.37}],
+
+                subImg_op_in : [0, 1, {start : 0.31, end : 0.35}],
+                subImg_op_out: [1, 0, {start : 0.35, end : 0.39}],
+
+                subVid_op_in : [0, 1, {start : 0.35, end : 0.39}],
+                subVid_op_in : [1, 0, {start : 0.32, end : 0.34}],
+
+                part1_op_in : [0, 1, {start : 0.1, end : 0.3}],
+
+                music_op_out : [1, 0, {start : 0.7, end : 0.73}],
+
+                titleSson2_op_in : [0, 1, {start : 0.73, end : 0.9}]
             }
 
         },
@@ -55,11 +83,12 @@
             multiple : 2,
             objs : {
                 container : document.querySelector('#section-1'),
-
+                titleSson2 : document.querySelector('#id_season-1'),
+                history2 : document.querySelector('#id_div_his_1')
             },
             values : {
-                MessageIntro_opacity_in : [0, 1, {start : 0, end : 0.05}],
-                MessageIntro_opacity_out : [1, 0, {start : 0.05, end : 0.1}],
+                titleSson2_op_out : [1, 0, {start : 0, end : 0.04}],
+                history2_op_out : [1, 0, {start : 0.04, end : 0.07}]
 
             }
 
@@ -247,36 +276,104 @@
 
         let secObj = sectionSet[currentSection].objs
 
+        //mene switcher
+        
+        const menu = document.getElementById("menu");
+        let rotation = 0;
+
         switch(currentSection){
             case 0 : 
                 console.log('case0')
-                if(offsetRate < 0.1) {
+                if(offsetRate < 0.01) {
                     secObj.mainTitle.style.opacity = `${1}`;
+                    secObj.mainTitle2.style.opacity = `${1}`;
+
+                    secObj.mainTitle2.style.display = 'flex';
+                    secObj.mainTitle.style.display = 'flex';
+
                     secObj.switcher.style.opacity = `${0}`;
-                    secObj.switcher.style.cursor = 'default';
+                    secObj.menuSwitcher.style.cursor = 'default';
                 }
-                else if (offsetRate > 0.13 && offsetRate < 0.2) {
+                else if (offsetRate > 0.01 && offsetRate < 0.04) {
                     secObj.switcher.style.cursor = 'default';
                     opOutval = calcValue(sectionSet[currentSection].values.mainTitle_opacity_out);
                     secObj.mainTitle.style.opacity = `${opOutval}`;
+                }
+                else if (offsetRate > 0.05 && offsetRate < 0.08){
+                    secObj.mainTitle.style.opacity = `${0}`;
+
+                    opOutval = calcValue(sectionSet[currentSection].values.mainTitle2_opacity_out);
+                    secObj.mainTitle2.style.opacity = `${opOutval}`;
 
                     opInVal = calcValue(sectionSet[currentSection].values.switcher_opacity_in);
                     secObj.switcher.style.opacity = `${opInVal}`;
-
                 }
-                else if (offsetRate > 0.2 && offsetRate < 0.3) {
-                    secObj.switcher.style.cursor = 'pointer';
-                    secObj.mainTitle.style.opacity = `${0}`;
-                    // secObj.mainTitle.style.display = 'none'
+                else if(offsetRate > 0.08 && offsetRate < 0.09) {
+                    secObj.mainTitle2.style.opacity = `${0}`;
+                    secObj.mainTitle2.style.display = 'none';
+                    secObj.mainTitle.style.display = 'none';
+
+                    secObj.menuSwitcher.style.cursor = 'pointer';
+                }
+                else if(offsetRate > 0.1 && offsetRate < 0.3) {
+                    opInVal = calcValue(sectionSet[currentSection].values.part1_op_in)
+                    secObj.titleSson.style.opacity = `${opInVal}`
+                    secObj.history1.style.opacity = `${opInVal}`
+                }
+                else if(offsetRate > 0.33 && offsetRate < 0.35){
+                    opoutVal = calcValue(sectionSet[currentSection].values.titleSson_op_out)
+                    secObj.titleSson.style.opacity = `${opoutVal}`
+                }
+                else if(offsetRate > 0.35 && offsetRate < 0.37){
+                    opoutVal = calcValue(sectionSet[currentSection].values.history1_op_out)
+                    secObj.history1.style.opacity = `${opoutVal}`
+                }
+                else if(offsetRate > 0.4 && offsetRate < 0.7){
+                    secObj.history1.style.opacity = `${0}`
+                    secObj.titleSson.style.opacity = `${0}`
+                    
+                }
+                else if(offsetRate > 0.7 && offsetRate < 0.73){
+                    opoutVal = calcValue(sectionSet[currentSection].values.music_op_out)
+                    secObj.music.style.opacity = `${opoutVal}` 
+                }
+
+                else if(offsetRate > 0.73 && offsetRate < 0.9){
+                    secObj.titleSson.style.opacity = `${0}`
+                    secObj.history1.style.opacity = `${0}`
+
+                    opInVal = calcValue(sectionSet[currentSection].values.titleSson2_op_in)
+                    secObj.history2.style.opacity = `${opInVal}` 
+                    secObj.titleSson2.style.opacity = `${opInVal}`
                 }
             break;
 
             case 1 : 
                 console.log('case1')
+                sectionSet[currentSection - 1].objs.menuSwitcher.style.cursor = 'pointer';
+                sectionSet[currentSection - 1].objs.switcher.style.display = 'flex';
+                sectionSet[currentSection - 1].objs.switcher.style.opacity = `${1}`;
+                if(offsetRate > 0 && offsetRate < 0.04) {
+                    opOutval = calcValue(sectionSet[currentSection].values.titleSson2_op_out)
+                    secObj.titleSson2.style.opacity = `${opOutval}`
+                }
+                else if(offsetRate > 0.04 && offsetRate < 0.07) {
+                    secObj.titleSson2.style.opacity = `${0}`
+
+                    opOutval = calcValue(sectionSet[currentSection].values.history2_op_out)
+                    secObj.history2.style.opacity = `${opOutval}`
+                }
+                else if(offsetRate > 0.1 && offsetRate < 0.2) {
+                    secObj.titleSson2.style.opacity = `${0}`
+                    secObj.history2.style.opacity = `${0}`
+                }
             break;
 
             case 2 : 
                 console.log('case2')
+                sectionSet[currentSection - 2].objs.menuSwitcher.style.cursor = 'pointer';
+                sectionSet[currentSection - 2].objs.switcher.style.display = 'flex';
+                sectionSet[currentSection - 2].objs.switcher.style.opacity = `${1}`;
             break;
         }
     }
@@ -297,6 +394,8 @@
 
             sectionSet[0].objs.mainTitle.style.transform = `translateX(${tslXValue}px)`
             sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
+            sectionSet[0].objs.mainTitle2.style.transform = `translateX(${tslXValue}px)`
+            sectionSet[0].objs.mainTitle2.style.opacity = `${opctValue}`;
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
         }
         else if (opctValue >= 0.93){
@@ -306,6 +405,8 @@
 
             sectionSet[0].objs.mainTitle.style.transform = `translateX(${0}px)`
             sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
+            sectionSet[0].objs.mainTitle2.style.transform = `translateX(${0}px)`
+            sectionSet[0].objs.mainTitle2.style.opacity = `${opctValue}`;
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
 
             return
