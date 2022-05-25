@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 5000px;
+            overflow-x: hidden;
+            z-index: auto;
+        }
+
+        #main-canvas {
+            position: fixed;
+            left: 0;
+            top : 0;
+            background-color: beige; 
+            z-index: -1;
+
+        }
+
+        h1{
+            font-size: 50px;
+            z-index: 1;
+            position: fixed;
+            top: 441px;
+            left: 604px;
+        }
+
+
+    </style>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+        const mainCanvas = document.querySelector('#main-canvas');
+        const context = mainCanvas.getContext('2d');
+        const h1Tag = document.querySelector('#id_h1')
+        
+
+        const canvasImages = [];
+        const imageCount = 387;
+        let index = 0;
+
+        //이미지 파일을 로딩하는 함수.
+        const loadImages = function()
+        {
+            let elmImage = null;
+            for (let i = 0; i < imageCount; i++)
+            {                
+                elmImage = new Image();
+            
+                elmImage.src = `./earth/EARTH_${i}.png`;
+                canvasImages.push(elmImage); 
+            }
+        }
+
+        loadImages();
+
+
+        window.addEventListener('scroll', ()=>{
+            let rate = 0;
+            let index = 0;
+
+            
+
+            rate =  window.scrollY / (document.body.offsetHeight- window.innerHeight);
+            console.log('rate = ' + rate)
+            if (rate > 1)
+                rate = 1;
+
+            if (rate < 0)
+                rate = 0;
+            
+            h1Tag.style.opacity = `${rate}`
+            index = Math.floor((imageCount - 1) * rate);            
+            context.drawImage(canvasImages[index], 0, 0);       
+        });
+    });
+
+    </script>
+
+
+</head>
+<body>
+    <canvas id="main-canvas" width="1920" height="1080"></canvas>
+    <h1 id="id_h1" >위대한 지구, 그 신비속으로..</h1>
+
+    
+    
+</body>
+</html>

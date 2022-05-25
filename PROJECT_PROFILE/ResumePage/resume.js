@@ -17,7 +17,7 @@
     let tslYValue = 0;
     let tslXValue = 300;
 
-
+    setInterval
     const sectionSet = [
         // section-0
         {
@@ -69,7 +69,7 @@
 
                 part1_op_in : [0, 1, {start : 0.1, end : 0.3}],
 
-                music_op_out : [1, 0, {start : 0.7, end : 0.73}],
+                music_op_out : [1, 0, {start : 0.67, end : 0.73}],
 
                 titleSson2_op_in : [0, 1, {start : 0.73, end : 0.9}]
             }
@@ -84,14 +84,19 @@
             objs : {
                 container : document.querySelector('#section-1'),
                 titleSson2 : document.querySelector('#id_season-1'),
-                history2 : document.querySelector('#id_div_his_1')
+                history2 : document.querySelector('#id_div_his_1'),
+                armyImg : document.querySelector('#div_army'),
+
+                titleSson3 : document.querySelector('#id_season-2'),
+                history3 : document.querySelector('#id_div_his_2')
             },
             values : {
                 titleSson2_op_out : [1, 0, {start : 0, end : 0.04}],
-                history2_op_out : [1, 0, {start : 0.04, end : 0.07}]
+                history2_op_out : [1, 0, {start : 0.04, end : 0.07}],
+                armyImg_op_out : [1, 0, {start : 0.5, end : 0.59}],
 
+                titleSson3_op_int : [0, 1, {start : 0.63, end : 0.7}],
             }
-
         },
 
         // section-2
@@ -101,13 +106,13 @@
             multiple : 2,            
             objs : {
                 container : document.querySelector('#section-2'),
-
+                titleSson3 : document.querySelector('#id_season-2'),
+                history3 : document.querySelector('#id_div_his_2')
             },
             values : {
-                // MessageA_opacity_in : [0, 1, {start : 0.05, end : 0.15}],
-                // MessageA_translateX : [500, 0, {start : 0.5, end : 0.59}]
+                titleSson3_op_out : [1, 0, {start : 0, end : 0.05}],
+                
             }
-
         }        
     ];
 
@@ -333,7 +338,7 @@
                     secObj.titleSson.style.opacity = `${0}`
                     
                 }
-                else if(offsetRate > 0.7 && offsetRate < 0.73){
+                else if(offsetRate > 0.67 && offsetRate < 0.73){
                     opoutVal = calcValue(sectionSet[currentSection].values.music_op_out)
                     secObj.music.style.opacity = `${opoutVal}` 
                 }
@@ -367,6 +372,15 @@
                     secObj.titleSson2.style.opacity = `${0}`
                     secObj.history2.style.opacity = `${0}`
                 }
+                else if(offsetRate > 0.5 && offsetRate < 0.59) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.armyImg_op_out)
+                    secObj.armyImg.style.opacity = `${opoutVal}`
+                }
+                else if(offsetRate > 0.63 && offsetRate < 0.7) {
+                    opInVal = calcValue(sectionSet[currentSection].values.titleSson3_op_int)
+                    secObj.titleSson3.style.opacity = `${opInVal}`
+                    secObj.history3.style.opacity = `${opInVal}`
+                }
             break;
 
             case 2 : 
@@ -374,6 +388,16 @@
                 sectionSet[currentSection - 2].objs.menuSwitcher.style.cursor = 'pointer';
                 sectionSet[currentSection - 2].objs.switcher.style.display = 'flex';
                 sectionSet[currentSection - 2].objs.switcher.style.opacity = `${1}`;
+
+                if(offsetRate > 0 && offsetRate < 0.05) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.titleSson3_op_out)
+                    secObj.titleSson3.style.opacity = `${opoutVal}`
+                    secObj.history3.style.opacity = `${opoutVal}`
+                }
+                else if(offsetRate > 0.05 && offsetRate < 0.06) {
+                    secObj.titleSson3.style.opacity = `${0}`
+                    secObj.history3.style.opacity = `${0}`
+                }
             break;
         }
     }
