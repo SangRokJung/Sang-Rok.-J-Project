@@ -1,4 +1,6 @@
 (()=>{
+    
+
     // 스크롤 값
     let yOffset = 0;
 
@@ -475,7 +477,7 @@
                     sectionSet[currentSection - 1].objs.seriseMsgB.style.opacity = `${0}`;
                     sectionSet[currentSection - 1].objs.seriseMsgC.style.opacity = `${0}`;
                     
-                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'block'}`;
+                    sectionSet[currentSection].objs.seriseMsgA.style.display = `${'flex'}`;
 
                 }
                 else if (offsetRate >= 0.05 && offsetRate <= 0.15) {

@@ -1,0 +1,71 @@
+@charset "UTF-8"; 
+
+
+
+#id_section-0-1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    position: relative;
+    top: 400px;
+}
+
+#id_section-0-1 p,
+#id_section-0-2 p,
+#id_section-0-3 p,
+#id_section-0-4 p{
+    color: #1d1d1f;
+    font-size: 80px;
+    font-weight: 700;
+    
+}
+
+#id_section-0-1 h4{
+    color: #1d1d1f;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+#id_section-0-2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    position: relative;
+    top: 1200px;
+}
+
+#id_section-0-2 h3,
+#id_section-0-3 h3,
+#id_section-0-4 h3{
+    color: #1d1d1f;
+    font-size: 23px;
+    font-weight: 400;
+}
+
+#id_section-0-3{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    position: relative;
+    top: 2000px;
+}
+
+#id_section-0-4{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    position: relative;
+    top: 2800px;
+}
+
+#id_section-1-0-1{
+
+}
