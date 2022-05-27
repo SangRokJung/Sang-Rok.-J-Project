@@ -488,8 +488,9 @@
                     // tsXinVal = calcValue(sectionSet[currentSection].values.MessageA_translateX);
                     // // sectionSet[currentSection].objs.seriseMsgA.style.transform = `translateX(${tsXinVal}px)`;
                 }
-                else if (offsetRate > 0.18) {
+                else if (offsetRate > 0.15) {
                     sectionSet[currentSection].objs.seriseMsgA.style.opacity = `${1}`;
+                    sectionSet[currentSection].objs.seriseMsgB.style.opacity = `${1}`;
 
                 }
 

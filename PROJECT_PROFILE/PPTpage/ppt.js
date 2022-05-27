@@ -34,9 +34,17 @@
             // section에서 사용하는 element들을 저장.
             objs : {
                 container : document.querySelector('#section-0'),
+                seriseMsg1 : document.querySelector('#id_section-0-1'),
+                seriseMsg2 : document.querySelector('#id_section-0-2'),
+                seriseMsg3 : document.querySelector('#id_section-0-3'),
+                seriseMsg4 : document.querySelector('#id_section-0-4'),
             },
             // section에서 사용하는 값들을 저장.
             values : {
+                seriseMsg1_op_out : [1, 0, {start : 0.05, end : 0.1}],
+                seriseMsg2_op_out : [1, 0, {start : 0.3, end : 0.37}],
+                seriseMsg3_op_out : [1, 0, {start : 0.57, end : 0.63}],
+                seriseMsg4_op_out : [1, 0, {start : 0.84, end : 0.91}]
 
             }
 
@@ -46,12 +54,24 @@
         {
             type : 'sticky',
             height : 0,
-            multiple : 1,
+            multiple : 8,
             objs : {
                 container : document.querySelector('#section-1'),
+                seriseMsg1 : document.querySelector('#id_section-1-0'),
+                seriseMsg2 : document.querySelector('#id_section-1-1'),
+                seriseMsg3 : document.querySelector('#id_section-1-2'),
+                seriseMsg4 : document.querySelector('#id_section-1-3'),
+                seriseMsg5 : document.querySelector('#id_section-1-4'),
+                seriseMsg6 : document.querySelector('#id_section-1-5'),
             },
+            // section에서 사용하는 값들을 저장.
             values : {
-
+                seriseMsg1_op_out : [1, 0, {start : 0.06, end : 0.076}],
+                seriseMsg2_op_out : [1, 0, {start : 0.256, end : 0.27}],
+                seriseMsg3_op_out : [1, 0, {start : 0.4, end : 0.42}],
+                seriseMsg4_op_out : [1, 0, {start : 0.55, end : 0.58}],
+                seriseMsg5_op_out : [1, 0, {start : 0.7, end : 0.74}],
+                seriseMsg6_op_out : [1, 0, {start : 0.86, end : 0.89}],
             }
         },
 
@@ -59,12 +79,15 @@
         {
             type : 'normal',
             height : 0,
-            multiple : 1,            
+            multiple : 3,            
             objs : {
                 container : document.querySelector('#section-2'),
+                seriseMsg1 : document.querySelector('#id_section-2-0'),
+                seriseMsg2 : document.querySelector('#id_section-2-1'),
             },
             values : {
-                
+                seriseMsg1_op_out : [1, 0, {start : 0.17, end : 0.2}],
+                seriseMsg2_op_out : [1, 0, {start : 0.256, end : 0.27}],
             }
         }        
     ];
@@ -241,15 +264,89 @@
 
         switch(currentSection){
             case 0 : 
-
+                if (offsetRate >= 0.05 && offsetRate <=0.1) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg1_op_out);
+                    secObj.seriseMsg1.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.1 && offsetRate <= 0.3) {
+                    secObj.seriseMsg1.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.3 && offsetRate <= 0.37) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg2_op_out);
+                    secObj.seriseMsg2.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.37 && offsetRate <= 0.57) {
+                    secObj.seriseMsg2.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.57 && offsetRate <= 0.63) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg3_op_out);
+                    secObj.seriseMsg3.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.63 && offsetRate <= 0.84) {
+                    secObj.seriseMsg3.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.84 && offsetRate <= 0.91) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg4_op_out);
+                    secObj.seriseMsg4.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.91 && offsetRate <= 1) {
+                    secObj.seriseMsg4.style.opacity = `${0}`;
+                }
             break;
 
             case 1 : 
-
+                if (offsetRate >= 0.06 && offsetRate <=0.076) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg1_op_out);
+                    secObj.seriseMsg1.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.076 && offsetRate <= 0.256) {
+                    secObj.seriseMsg1.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.256 && offsetRate <= 0.27) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg2_op_out);
+                    secObj.seriseMsg2.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.27 && offsetRate <= 0.4) {
+                    secObj.seriseMsg2.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.4 && offsetRate <= 0.42) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg3_op_out);
+                    sectionSet[currentSection].objs.seriseMsg3.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.42 && offsetRate <= 0.55) {
+                    secObj.seriseMsg3.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.55 && offsetRate <= 0.58) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg4_op_out);
+                    secObj.seriseMsg4.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.58 && offsetRate <= 0.7) {
+                    secObj.seriseMsg4.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.7 && offsetRate <= 0.74) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg5_op_out);
+                    secObj.seriseMsg5.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.74 && offsetRate <= 0.84) {
+                    secObj.seriseMsg5.style.opacity = `${0}`;
+                }
+                else if (offsetRate >= 0.86 && offsetRate <= 0.89) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg6_op_out);
+                    secObj.seriseMsg6.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.89 && offsetRate <= 1) {
+                    secObj.seriseMsg6.style.opacity = `${0}`;
+                }
             break;
 
             case 2 : 
-
+                if (offsetRate >= 0.17 && offsetRate <=0.2) {
+                    opoutVal = calcValue(sectionSet[currentSection].values.seriseMsg1_op_out);
+                    secObj.seriseMsg1.style.opacity = `${opoutVal}`;
+                }
+                else if (offsetRate >= 0.2 && offsetRate <= 1) {
+                    secObj.seriseMsg1.style.opacity = `${0}`;
+                }
             break;
         }
     }
@@ -268,10 +365,9 @@
             opctValue += 0.008;
             tslXValue -= 2.5;
 
-            sectionSet[0].objs.mainTitle.style.transform = `translateX(${tslXValue}px)`
-            sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
-            sectionSet[0].objs.mainTitle2.style.transform = `translateX(${tslXValue}px)`
-            sectionSet[0].objs.mainTitle2.style.opacity = `${opctValue}`;
+            sectionSet[0].objs.seriseMsg1.style.transform = `translateX(${tslXValue}px)`
+            sectionSet[0].objs.seriseMsg1.style.opacity = `${opctValue}`;
+
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
         }
         else if (opctValue >= 0.93){
@@ -279,10 +375,9 @@
             opctValue = 1;
             clearInterval(intv);
 
-            sectionSet[0].objs.mainTitle.style.transform = `translateX(${0}px)`
-            sectionSet[0].objs.mainTitle.style.opacity = `${opctValue}`;
-            sectionSet[0].objs.mainTitle2.style.transform = `translateX(${0}px)`
-            sectionSet[0].objs.mainTitle2.style.opacity = `${opctValue}`;
+            sectionSet[0].objs.seriseMsg1.style.transform = `translateX(${0}px)`
+            sectionSet[0].objs.seriseMsg1.style.opacity = `${opctValue}`;
+
             // sectionSet[0].objs.seriseVdieoA.style.transform = `translateY(${tslYValue}px)`
 
             return

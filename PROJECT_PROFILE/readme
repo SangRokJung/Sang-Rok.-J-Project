@@ -188,7 +188,16 @@
 - 메인 메뉴
     PPT 메뉴 생성
 - PPT 페이지 생성
-    PPT download 메뉴 생성
+    main menu에 PPT download 메뉴 생성
 
 + PPT 페이지 건설
+
+[0527]
+- Main Menu
+    read me 메뉴 추가
+- ppt 페이지
+    요소 추가 및 ppt.pdf 업로드
+    링크 hover 액션 설계
+    스크롤 fade out 애니메이션 설계
+
 
