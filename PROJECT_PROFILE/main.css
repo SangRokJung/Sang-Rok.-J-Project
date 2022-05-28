@@ -151,7 +151,7 @@ a {
 
 .local-nav-item{
     text-align: center;
-    width: 1000px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -449,7 +449,7 @@ a {
 #links_div3,
 #links_div4{
     display: flex;
-    width: 842px;
+    width: 795px;
     flex-direction: column;
     align-items: flex-end;
     
@@ -485,8 +485,10 @@ a {
 #links_div2-2,
 #links_div2-3,
 #links_div3-1,
+#links_div3-2,
 #links_div4-1,
-#links_div4-2{
+#links_div4-2,
+#links_div4-3{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -494,6 +496,7 @@ a {
     align-items: center;
     height: 34px;
 }
+
 
 #links_div1-1 a,
 #links_div1-2 a,
@@ -503,8 +506,10 @@ a {
 #links_div2-1 a,
 #links_div2-2 a,
 #links_div3-1 a,
+#links_div3-2 a,
 #links_div4-1 a,
-#links_div4-2 a{
+#links_div4-2 a,
+#links_div4-3 a{
     cursor: pointer;
     margin-left: 5px;
     background-color: #0071e3;
@@ -527,8 +532,10 @@ a {
 #links_div2-1 a:hover,
 #links_div2-2 a:hover,
 #links_div3-1 a:hover,
+#links_div3-2 a:hover,
 #links_div4-1 a:hover,
-#links_div4-2 a:hover{
+#links_div4-2 a:hover,
+#links_div4-3 a:hover{
     background-color: #89a3bd;
     color: #fff;
 }
@@ -615,22 +622,3 @@ a {
     flex-direction: row;
 }
 
-#id_ppt_down{
-    font-family: 'Noto Sans', sans-serif;
-    letter-spacing: -0.07rem;
-
-    margin-left: 30px;
-    color: #8a8a8a;
-    font-size: 16px;
-    line-height: 1.25rem!;
-    font-weight: 400;
-    font-style: normal;
-    cursor: pointer;
-
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-}
-
-#id_ppt_down:hover{
-    color: #CCF3EE;
-}
