@@ -69,6 +69,7 @@
 
                 part1_op_in : [0, 1, {start : 0.1, end : 0.3}],
 
+                music_op_in : [0, 1, {start : 0.4, end : 0.6}],
                 music_op_out : [1, 0, {start : 0.67, end : 0.73}],
 
                 titleSson2_op_in : [0, 1, {start : 0.73, end : 0.9}]
@@ -333,16 +334,16 @@
                     opoutVal = calcValue(sectionSet[currentSection].values.history1_op_out)
                     secObj.history1.style.opacity = `${opoutVal}`
                 }
-                else if(offsetRate > 0.4 && offsetRate < 0.7){
+                else if(offsetRate > 0.4 && offsetRate < 0.6){
                     secObj.history1.style.opacity = `${0}`
                     secObj.titleSson.style.opacity = `${0}`
-                    
+                    opInVal = calcValue(sectionSet[currentSection].values.music_op_in)
+                    secObj.music.style.opacity = `${opInVal}` 
                 }
                 else if(offsetRate > 0.67 && offsetRate < 0.73){
                     opoutVal = calcValue(sectionSet[currentSection].values.music_op_out)
                     secObj.music.style.opacity = `${opoutVal}` 
                 }
-
                 else if(offsetRate > 0.73 && offsetRate < 0.9){
                     secObj.titleSson.style.opacity = `${0}`
                     secObj.history1.style.opacity = `${0}`
