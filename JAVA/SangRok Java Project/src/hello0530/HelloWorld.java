@@ -1,6 +1,5 @@
-/**
- * HelloWorld
- */
+package hello0530;
+
 public class HelloWorld {
 
     public static void main(String[] args) {

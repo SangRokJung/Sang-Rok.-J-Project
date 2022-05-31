@@ -1,3 +1,5 @@
+package hello0530.Answer;
+
 public class Pos {
 	public double x;
 	public double y;
