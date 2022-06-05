@@ -12,16 +12,16 @@ public class qudraticAr3 {
             {"integer", "정수"}
         };
 
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
+            for(int i = 0; i< words.length; i++) {
+                String tmp = scanner.nextLine();
 
-        for(int i = 0; i< words.length; i++) {
-            String tmp = scanner.nextLine();
-
-            if(tmp.equals(words[i][1])) {
-                System.out.println("같다.");
-            }
-            else{
-                System.out.println("다르다.");
+                if(tmp.equals(words[i][1])) {
+                    System.out.println("같다.");
+                }
+                else{
+                    System.out.println("다르다.");
+                }
             }
         }
     }
