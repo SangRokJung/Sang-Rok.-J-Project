@@ -13,22 +13,34 @@ public class stack {
     
     // 생성자
     // Set the Size of the Stack
+    public stack(){
+        this.stack = new Object[10];
+    }
     public stack(int stackSize){
         this.stack = new Object[stackSize];
     }
 
     // checking the empty of the data
     public boolean isEmpty(){
-        return -1 == top;
+        if(-1 == top){
+            return true;
+        }
+        return false;  
     }
 
     // Checking the full of the data
-    public boolean isFull(){
-        return stack.length - 1 == top;
+    private boolean isFull(){
+        if(stack.length - 1 == top){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
     }
 
     // Stack push Function
-    public void push(Object data){
+    private void push(Object data){
         if(isFull()){
             throw new RuntimeException("stack is full");
         }

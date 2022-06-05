@@ -9,13 +9,14 @@
 //수량은 1~10 사이 랜덤값
 
     document.addEventListener('DOMContentLoaded', () => {
+        //통합 테이블 생성
         const tableTag = document.querySelector('table')
 
+        //추가, 초화 버튼 생성
         const addBtnTag = document.querySelector('#id_addBtn')
         const delBtnTag = document.querySelector('#id_delBtn')
 
-
-        //추가 버튼 기능
+        //추가 버튼 이벤트 + 기능
         addBtnTag.addEventListener('click', () => {
             const trTag = document.createElement('tr')
             const thNTag = document.createElement('th')
@@ -26,18 +27,18 @@
             trTag.append(thNTag, thFrtTag, thNumFrtTag)
             tableTag.appendChild(trTag)
 
+            //출력
             thNTag.textContent = `${num()}`
             thFrtTag.textContent = `${frtNme()}`
             thNumFrtTag.textContent = `${ranNum()}`
                 
-                //초기화 버튼 기능
+                //초기화 버튼 이벤트 + 기능
                 delBtnTag.addEventListener('click', () => {
 
                 tableTag.removeChild(trTag)
                 _num = 0;
             })
         })
-
     })
 
     //순차적 번호 리턴 함수

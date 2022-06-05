@@ -3,17 +3,26 @@ package hello0602;
 import java.util.Arrays;
 
 public class queue {
-// 배열은 int [10]으로 한다.
-// FIFO 구조
-// 환영큐는 선형구조인 배열을 이어저 있는 원형 구조 처럼 사용하는 큐 구조 이다.
+// Basic Array is int [10].
+// FIFO Structure.
 
     //data entry location
+    //euQueue Pointer
     int rearPointer = -1;
     
     //data subtract location
+    //deQueue Pointer
     int frontPointer = 0;
 
+    //Queue
     final Object[] queue;
+
+
+
+
+
+
+
 
     //constructor
     public queue(){
@@ -22,6 +31,12 @@ public class queue {
     public queue(int queueSize){
         this.queue = new Object[queueSize];
     }
+
+
+
+
+
+
 
 
     // Verify the Queue is full.
@@ -52,7 +67,7 @@ public class queue {
             throw new RuntimeException("Queue is Full");
         }
         else{
-            if(rearPointer == this.queue.length - 1){
+            if((rearPointer + 1) % (this.queue.length) == 0){
                 rearPointer = 0;
                 queue[rearPointer] = data;
             }
@@ -60,9 +75,7 @@ public class queue {
                 rearPointer++;
                 queue[rearPointer] = data;
             }
-
         }
-
     }
 
     // deQueue Function
@@ -85,20 +98,25 @@ public class queue {
 
 
 
-    
+
+
+
+
+
+
     public static void main(String[] args) {
         queue qu = new queue(10);
 
-        // qu.enQueue(10);
-        // qu.enQueue(20);
-        // qu.enQueue(30);
-        // qu.enQueue(40);
-        // qu.enQueue(50);
-        // qu.enQueue(60);
-        // qu.enQueue(70);
-        // qu.enQueue(80);
-        // qu.enQueue(90);
-        // qu.enQueue(100);
+        qu.enQueue(10);
+        qu.enQueue(20);
+        qu.enQueue(30);
+        qu.enQueue(40);
+        qu.enQueue(50);
+        qu.enQueue(60);
+        qu.enQueue(70);
+        qu.enQueue(80);
+        qu.enQueue(90);
+        qu.enQueue(100);
 
         qu.deQueue();
         // qu.deQueue();
@@ -108,7 +126,7 @@ public class queue {
         // qu.deQueue();
         // qu.deQueue();
 
-        // qu.enQueue(110);
+        qu.enQueue(110);
         // qu.enQueue(120);
         // qu.enQueue(130);
         // qu.enQueue(140);
@@ -117,6 +135,7 @@ public class queue {
         // qu.enQueue(170);
 
         System.out.println(qu.check());
+        System.out.println(qu.queue.length);
         System.out.println("RearPointer = " + qu.rearPointer);
         System.out.println("FrontPointer = " + qu.frontPointer);
     }

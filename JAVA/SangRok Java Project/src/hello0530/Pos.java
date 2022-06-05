@@ -1,4 +1,10 @@
+package hello0530;
+
+/**
+ * InnerPos
+ */
 public class Pos {
+
     public double x;
     public double y;
 
