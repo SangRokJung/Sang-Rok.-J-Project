@@ -20,10 +20,6 @@ public class queue {
 
 
 
-
-
-
-
     //constructor
     public queue(){
         this.queue = new Object[10];
@@ -31,10 +27,6 @@ public class queue {
     public queue(int queueSize){
         this.queue = new Object[queueSize];
     }
-
-
-
-
 
 
 

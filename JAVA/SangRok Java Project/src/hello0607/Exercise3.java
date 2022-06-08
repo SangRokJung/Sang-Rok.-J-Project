@@ -10,24 +10,22 @@ public class Exercise3 {
 
         if(order.equals("plus")){
             for(int i = 0; i < multiDim1.length; i++){
-            
                 for(int j = 0; j < multiDim1[i].length; j++){
                     result[i][j] = multiDim1[i][j] + multiDim2[i][j];
                 }
             }
-            return result;
         }
         else if (order.equals("minus")){
             for(int i = 0; i < multiDim1.length; i++){
-            
                 for(int j = 0; j < multiDim1[i].length; j++){
                     result[i][j] = multiDim1[i][j] - multiDim2[i][j];
                 }
             }
-            return result;
+        }
+        else{
+            result = null;
         }
         return null;
-
     }
 
     public static void main(String[] args) {
