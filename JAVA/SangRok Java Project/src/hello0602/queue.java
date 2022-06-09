@@ -16,18 +16,16 @@ public class queue {
 
     //Queue
     final Object[] queue;
-
-
+    final int index = 10;
 
 
     //constructor
     public queue(){
-        this.queue = new Object[10];
+        this.queue = new Object[index];
     }
     public queue(int queueSize){
         this.queue = new Object[queueSize];
     }
-
 
 
 
@@ -89,12 +87,12 @@ public class queue {
     }
 
 
-
-
-
-
-
-
+    public void printQ(){
+        System.out.println("Queue : "+ check());
+        System.out.println("Queue Length : " + queue.length);
+        System.out.println("RearPointer = " + rearPointer);
+        System.out.println("FrontPointer = " + frontPointer);
+    }
 
     public static void main(String[] args) {
         queue qu = new queue(10);
@@ -126,9 +124,6 @@ public class queue {
         // qu.enQueue(160);
         // qu.enQueue(170);
 
-        System.out.println(qu.check());
-        System.out.println(qu.queue.length);
-        System.out.println("RearPointer = " + qu.rearPointer);
-        System.out.println("FrontPointer = " + qu.frontPointer);
+        qu.printQ();
     }
 }

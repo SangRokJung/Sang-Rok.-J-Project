@@ -3,57 +3,71 @@ package hello0608;
 import java.util.Arrays;
 
 public class Exercise1 {
-    public static double [][] h1Score = {
-        {87, 45, 87, 57, 89, 57},
-        {46, 55, 87, 79, 69, 70},
-        {48, 95, 69, 96, 48, 36},
-        {47, 96, 34, 86, 37, 69},
-        {97, 45, 57, 57, 29, 57},
-        {46, 95, 87, 79, 59, 90}
-    };    
-    public static double [][] m1Score = {
-        {87, 45, 87, 57, 89, 57},
-        {46, 55, 87, 79, 69, 70},
-        {48, 95, 69, 96, 48, 36},
-        {47, 96, 34, 86, 37, 69}
-    };
+
+    // Semester grade setting by subject.
+    public static double [][] ranScore(int sub, int terms){
+        double[][] result = new double [sub][terms];
+
+        for(int i = 0; i < result.length; i++){
+            for(int j = 0; j < result[i].length; j++){
+                result[i][j] =(int)(Math.random() * 100) + 1;
+            }
+
+        }
+        return result;
+    }
+
+    // high school grades
+    public static double [][] h1Score = ranScore(6, 6);
+    public static double [][] h2Score = ranScore(6, 6);
+
+    // middle school grades
+    public static double [][] m1Score = ranScore(4, 6);
+    public static double [][] m2Score = ranScore(4, 6);
+
+
+    // A Stdudent Average by 1year.
+    // public static double termsAverage(double[][] data){
+    //     double result = 0;
+    //     double total = 0;
+
+    //     for(int i=0; i<data.length; i++){
+    //         for(int j=0; j<data[i].length; j++){
+    //             total += data[i][j];
+    //         }
+    //     }
+    //     return result / (data.length * data[0].length);
+    // }
+
+
+    // public static double h1Average = termsAverage(h1Score);
+    // public static double h2Average = termsAverage(h2Score);
+
+    // public static double m1Average = termsAverage(m1Score);
+    // public static double m2Average = termsAverage(m2Score);
 
 	public static void main(String[] args) {
 
+        Student[] student = new Student[10];
+        int count = 0;
 
-        Student S1 = new Student();
-        mStudent mS1 = new mStudent("Jung", 981110, "Man", 3, 1);
-        hStudent hS1 = new hStudent();
-
-        hS1.setScore(h1Score);
-        mS1.setScore(m1Score);
-
-        System.out.println("MS Kor Average : " + mS1.aveSub("Kor"));
-        System.out.println("MS Math Average : " + mS1.aveSub("Math"));
-
-        System.out.println("MS 1-1 Average : " + mS1.aveTerms("1-1"));
-        System.out.println("MS 3-1 Average : " + mS1.aveTerms("3-1"));
+        // high school students
+        student[count++] = new hStudent("Jung", 981110, "Man", 3, 1, h1Score);
+        student[count++] = new hStudent("Sang", 941160, "Woman", 3, 1, h2Score);
 
 
-        System.out.println("HS Sco Average : " + hS1.aveSub("Sco"));
-        System.out.println("HS His Average : " + hS1.aveSub("His"));
+        // middle school students
+        student[count++] = new mStudent("Rok", 901160, "Woman", 3, 1, m1Score);
+        student[count++] = new mStudent("James", 901160, "Man", 3, 1, m2Score);
 
-        System.out.println("HS 1-1 Average : " + hS1.aveTerms("1-1"));
-        System.out.println("HS 3-1 Average : " + hS1.aveTerms("3-1"));
 
-        System.out.println(mS1.getName());
-
+        for(int i = 0; i < count; i++){
+            student[i].getID();
+            student[i].aveSub("Kor");
+            student[i].aveTerms("1-1");
+            student[i].aveGrade(1);
+            System.out.println("");
+        }
     }
-
-
-// 학기는 1-1, 1-2, 2-1, 2-2, 3-1, 3-2학기가 있음
-
-
-// 필요한 메소드
-// 과목별, 학기별 평균점수를 구하는 메소드 v
-// 학년별 평균점수를 구하는 메소드
-// 이름, 학년, 반을 출력하는 메소드 v
-// 기타 필요한 메소드
-
 
 }

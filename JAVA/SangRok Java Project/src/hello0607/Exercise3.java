@@ -25,7 +25,7 @@ public class Exercise3 {
         else{
             result = null;
         }
-        return null;
+        return result;
     }
 
     public static void main(String[] args) {

@@ -1,12 +1,12 @@
 package hello0608;
 
 public class Student {
-            // 모든 학생은 이름, 생년월일, 성별 정보가 있음
         // Every Students has name, birth, sex information.
-        String name = "0";
-        int birth = 0;
-        String sex = "0";
+        protected String name = "0";
+        protected int birth = 0;
+        protected String sex = "0";
 
+        //Coustructor
         public Student(){
             this.name = "None name";
             this.birth = 000000;
@@ -20,31 +20,21 @@ public class Student {
         }
 
 
-        //name output.
-        public String getName(){
-            return this.name;
+
+        //ID output.
+        public void getID(){
+            System.out.println("Name : " + name);
+            System.out.println("Birth : " + birth);
+            System.out.println("Sex : " + sex);
         }
 
+        public void aveSub(String string) {
+        }
 
-        //Method
-        //Average by Grade.
-        public double aveGrade(int grade){
-            double result = 0.0;
-            if(grade == 1){
-                
-            }
-            else if(grade == 2){
+        public void aveTerms(String string) {
+        }
 
-            }
-            else if(grade == 3){
-
-            }
-            else{
-
-            }
-
-
-            return result;
+        public void aveGrade(int i) {
         }
 
 }

@@ -1,21 +1,24 @@
 package hello0608;
 
+
 public class hStudent extends Student {
     // Hight Students has grade, class, 6 subjects and score of six semesters per subject.
-    int hGrade;
-    int hVan;
-    String [] hSubject = {"Kor", "Eng", "Math", "Sci", "Sco", "His"};
-    double [][] hSubjectScore = new double [6][6];
+    private int hGrade;
+    private int hVan;
+    private String [] hSubject = {"Kor", "Eng", "Math", "Sci", "Sco", "His"};
+    private double [][] hSubjectScore = new double [6][6];
+
 
 
     public hStudent(){
         this.hGrade = 0;
         this.hVan = 0;
     }
-    public hStudent(String _name, int _birth, String _sex, int _hGrade, int _hVan){
+    public hStudent(String _name, int _birth, String _sex, int _hGrade, int _hVan, double [][] hScore){
         super(_name, _birth, _sex);
         this.hGrade = _hGrade;
-        this.hVan = _hVan;                
+        this.hVan = _hVan;
+        this.hSubjectScore = hScore;      
     }
 
     //set Score
@@ -25,7 +28,7 @@ public class hStudent extends Student {
 
     //Method
     //Average by subjects
-    public double aveSub(String sub){
+    public void aveSub(String sub){
         double result = 0f;
         double totalScore = 0f;
 
@@ -63,10 +66,10 @@ public class hStudent extends Student {
             result = 0f;
         }
         result = totalScore /  hSubjectScore[0].length;
-        return Math.ceil(result);
+        System.out.println(sub + " Average is " + Math.ceil(result));
     }
     //Average by terms
-    public double aveTerms(String terms){
+    public void aveTerms(String terms){
         double result = 0.0f;
         double totalScore = 0.0f;
 
@@ -104,14 +107,30 @@ public class hStudent extends Student {
             result = 0f;
         }
         result = totalScore /  hSubjectScore[0].length;
-        return Math.ceil(result);
+        System.out.println(terms + " Average is " + Math.ceil(result));
     }
-    // grade Output
-    public int getGrade(){
-        return this.hGrade;
+    //Average by grade.
+    public void aveGrade(int grade){
+        double result = 0;
+        double total = 0;
+        for(int i=0; i<hSubjectScore.length; i++){
+            for(int j=0; j<hSubjectScore[i].length; j++){
+                total += hSubjectScore[i][j];
+            }
+        }
+        result = total / (hSubjectScore.length*hSubjectScore[0].length);
+        
+        System.out.println(grade + " Grade Average is "+ Math.ceil(result));
     }
-    // class Output
-    public int getVan(){
-        return this.hVan;
+
+
+
+    @Override
+    // ID OUTPUt
+    public void getID(){
+        super.getID();
+        System.out.println("Grade : " + hGrade);
+        System.out.println("Van : " + hVan);
     }
+
 }

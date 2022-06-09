@@ -15,10 +15,11 @@ public class mStudent extends Student{
         this.mVan = 0;                   
     }
 
-    public mStudent(String _name, int _birth, String _sex, int _mGrade, int _mVan){
+    public mStudent(String _name, int _birth, String _sex, int _mGrade, int _mVan, double [][] mScore){
         super(_name, _birth, _sex);
         this.mGrade = _mGrade;
         this.mVan = _mVan;           
+        this.mSubjectScore = mScore;
     }
     
     //set Score
@@ -29,7 +30,7 @@ public class mStudent extends Student{
 
     //Method
     //Average by subjects
-    public double aveSub(String sub){
+    public void aveSub(String sub){
         double result = 0f;
         double totalScore = 0f;
 
@@ -57,10 +58,10 @@ public class mStudent extends Student{
             result = 0f;
         }
         result = totalScore /  mSubjectScore[0].length;
-        return Math.ceil(result);
+        System.out.println(sub + "Average is " + Math.ceil(result));
     }
     //Average by terms
-    public double aveTerms(String terms){
+    public void aveTerms(String terms){
         double result = 0.0f;
         double totalScore = 0.0f;
 
@@ -98,14 +99,29 @@ public class mStudent extends Student{
             result = 0f;
         }
         result = totalScore /  mSubjectScore[0].length;
-        return Math.ceil(result);
+        System.out.println(terms + "Average is " + Math.ceil(result));
     }
-    // grade Output
-    public int getGrade(){
-        return this.mGrade;
+    //Average by grade.
+    public void aveGrade(int grade){
+        double result = 0;
+        double total = 0;
+        for(int i=0; i<mSubjectScore.length; i++){
+            for(int j=0; j<mSubjectScore[i].length; j++){
+                total += mSubjectScore[i][j];
+            }
+        }
+        result = total / (mSubjectScore.length*mSubjectScore[0].length);
+        
+        System.out.println(grade + " Grade Average is "+ Math.ceil(result));
     }
-    // class Output
-    public int getVan(){
-        return this.mVan;
+
+
+
+    // ID OUTPUt
+    @Override
+    public void getID(){
+        super.getID();
+        System.out.println("Grade : " + mGrade);
+        System.out.println("Van : " + mVan);
     }
 }
