@@ -1,22 +1,22 @@
 package hello0608;
 
 public class Student {
-        // Every Students has name, birth, sex information.
+        // Every Students has name, birth, gender information.
         protected String name = "0";
         protected int birth = 0;
-        protected String sex = "0";
+        protected String gender = "0";
 
         //Coustructor
         public Student(){
             this.name = "None name";
             this.birth = 000000;
-            this.sex = "None sex";
+            this.gender = "None gender";
         }
 
-        public Student(String _name, int _birth, String _sex){
+        public Student(String _name, int _birth, String _gender){
             this.name = _name;
             this.birth = _birth;
-            this.sex = _sex;
+            this.gender = _gender;
         }
 
 
@@ -25,7 +25,7 @@ public class Student {
         public void getID(){
             System.out.println("Name : " + name);
             System.out.println("Birth : " + birth);
-            System.out.println("Sex : " + sex);
+            System.out.println("gender : " + gender);
         }
 
         public void aveSub(String string) {
