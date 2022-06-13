@@ -17,7 +17,13 @@ public class Main {
         numbers.add(1, 15);
 
         numbers.removeFirst();
+
+        numbers.remove(2);
     
         System.out.println(numbers.toString());
+
+        System.out.println(numbers.indexOf(15));
+        System.out.println(numbers.indexOf(56));
+        System.out.println(numbers.indexOf(60));
     }
 }
