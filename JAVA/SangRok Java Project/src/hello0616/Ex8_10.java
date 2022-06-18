@@ -5,7 +5,7 @@ import java.io.*;
 public class Ex8_10 {
     public static void main(String[] args) {
         try{
-            File f  = createFile(args[0]);
+            File f  = createFile("text1.txt");
             System.out.println(f.getName() + "파일이 성공적으로 생성되었습니다.");
         }
         catch(Exception e){
