@@ -1,6 +1,6 @@
 package hello0620;
 
-public class main {
+public class hello1 {
 
     public static void main(String[] args) {
         intV a1 = new intV();

@@ -1,4 +1,4 @@
-package hello0620;
+package hello0621;
 
 public class point implements Cloneable {
     public int Xpos, Ypos;
