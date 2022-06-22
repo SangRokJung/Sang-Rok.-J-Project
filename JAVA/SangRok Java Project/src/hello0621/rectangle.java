@@ -1,17 +1,21 @@
 package hello0621;
 
 public class rectangle implements Cloneable {
+
+    private String name;
     private point upperLeft;
     private point lowerRight;
     
 
     public rectangle(){
+        name = "no name";
         upperLeft = new point();
         lowerRight = new point();
     }
 
 
     public rectangle(int left, int top, int right, int bottom){
+        name = "no name";
         upperLeft = new point(left, top);
         lowerRight = new point(right, bottom);
     }
@@ -65,8 +69,17 @@ public class rectangle implements Cloneable {
         return "upperLeft(" + upperLeft.Xpos +", " + upperLeft.Ypos +"), lowerRight(" + lowerRight.Xpos +", " + lowerRight.Ypos +")";
     }
 
+
+    //deep copy
     @Override
     public Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        rectangle result = null;
+
+        result = (rectangle) super.clone();
+
+        result.upperLeft =  (point) upperLeft.clone();
+        result.lowerRight = (point) lowerRight.clone();
+
+        return result;
     }
 }
