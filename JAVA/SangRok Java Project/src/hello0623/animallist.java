@@ -3,9 +3,9 @@ package hello0623;
 import java.util.Scanner;
 
 public class animallist {
-    public static Node getLastNode(){
+    // public static Node getLastNode(){
 
-    }
+    // }
 
     public static void main(String[] args) {
 
@@ -32,7 +32,7 @@ public class animallist {
                     System.out.println("입원할 동물 나이를 입력하세요");
                     age = scan.nextInt();
 
-                    lc.insertNode(age, String);
+                    // lc.insertNode(age, String);
 
                     break;
 
