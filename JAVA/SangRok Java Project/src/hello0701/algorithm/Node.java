@@ -1,9 +1,9 @@
-package com.algorithm;
+package hello0701.algorithm;
 
 public class Node {
-	private NodeData 	data;		// ³ëµåµ¥ÀÌÅÍ
-	private Node 		prev;		// ÀÌÀü³ëµå ¸µÅ©Á¤º¸
-	private Node 		next;		// ´ÙÀ½³ëµå ¸µÅ©Á¤º¸.
+	private NodeData 	data;		// ï¿½ï¿½åµ¥ï¿½ï¿½ï¿½ï¿½
+	private Node 		prev;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½
+	private Node 		next;		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ï¿½ï¿½.
 	
 
 	public Node()

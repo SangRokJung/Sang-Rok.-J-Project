@@ -1,12 +1,11 @@
-package com.algorithm;
-
+package hello0701.algorithm;
 public class ListContainer {
 	
 	private Node 	header;
 	private int 	count;
 	
-	private int 	findNextCallCount;	// findNext¸¦ ¸î¹ø È£Ãâ ÇÏ¿´´Â°¡?
-	private int[] 	findResult;			// findFirst¸¦ ÇÑ °á°ú
+	private int 	findNextCallCount;	// findNextï¿½ï¿½ ï¿½ï¿½ï¿½ È£ï¿½ï¿½ ï¿½Ï¿ï¿½ï¿½Â°ï¿½?
+	private int[] 	findResult;			// findFirstï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	
 	// DONE
 	public ListContainer()
@@ -34,21 +33,21 @@ public class ListContainer {
 	}
 	
 	
-	// DONE ³ëµå¸¦ Ãß°¡ÇÑ´Ù. 
+	// DONE ï¿½ï¿½å¸¦ ï¿½ß°ï¿½ï¿½Ñ´ï¿½. 
 	public boolean insertNode()
 	{
 		Node lastNode = null;
-		//1. »õ·Î¿î ³ëµå¸¦ ÇÏ³ª »ý¼ºÇÑ´Ù.
+		//1. ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½å¸¦ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		Node newNode = new Node();
 		
 		if (count == 0)
 		{
-			// Çì´õ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			header = newNode;
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµåÀÇ ¸µÅ©¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			lastNode = getLastNode();
 			lastNode.setNext(newNode);
 		}
@@ -64,12 +63,12 @@ public class ListContainer {
 		
 		if (count == 0)
 		{
-			// Çì´õ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			header = _newNode;
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµåÀÇ ¸µÅ©¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			lastNode = getLastNode();
 			lastNode.setNext(_newNode);
 		}
@@ -83,18 +82,18 @@ public class ListContainer {
 	public boolean insertNode(int _value1, String _value2)
 	{
 		Node lastNode = null;
-		//1. »õ·Î¿î ³ëµå¸¦ ÇÏ³ª »ý¼ºÇÑ´Ù.
+		//1. ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½å¸¦ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		
 		Node newNode = new Node(_value1, _value2);
 		
 		if (count == 0)
 		{
-			// Çì´õ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			header = newNode;
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµåÀÇ ¸µÅ©¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			lastNode = getLastNode();
 			lastNode.setNext(newNode);
 		}
@@ -108,22 +107,22 @@ public class ListContainer {
 		Node target = header;
 		Node before = null;
 		
-		// countÀÇ À¯È¿¼º °Ë»ç
+		// countï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ ï¿½Ë»ï¿½
 		if (count == 0)
 			return false;
 		
-		// indexÀÇ À¯È¿¼ºÀ» °Ë»ç
+		// indexï¿½ï¿½ ï¿½ï¿½È¿ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 		if ((count <= _index) ||  (_index < 0))
 			return false;
 		
-		//1. target°ú before¸¦ Ã£´Â´Ù.		
+		//1. targetï¿½ï¿½ beforeï¿½ï¿½ Ã£ï¿½Â´ï¿½.		
 		for (int i = 0; i < _index; i++)
 		{
 			before = target;
 			target = target.getNext();
 		}
 		
-		// 0¹ø ÀÎµ¦½º¸¦ Áö¿ö¶ó¶ó´Â ÀÇ¹Ì
+		// 0ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½
 		if (before == null)
 			header = target.getNext();
 		else
@@ -171,12 +170,12 @@ public class ListContainer {
 		int dataCount = 0;
 		int idx = 0;
 		
-		// 1. _value¿Í °°Àº °ªÀ» °¡Áø ³ëµåÀÇ °³¼ö¸¦ ±¸ÇÑ´Ù.
+		// 1. _valueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 		for (int i = 0; i < count; i++)
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value == data.getvalue1())
@@ -187,16 +186,16 @@ public class ListContainer {
 			target = target.getNext();
 		}
 		
-		// 2. Ã£Àº µ¥ÀÌÅÍ °³¼ö¸¸Å­ ¹è¿­À» ¸¸µç´Ù.
+		// 2. Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 		result = new int[dataCount];
 		target = header;
 		
-		// 3. ÀÎµ¦½º¸¦ Ã£¾Æ¼­ ¹è¿­À» Ã¤¿öÁØ´Ù.
+		// 3. ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½è¿­ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½Ø´ï¿½.
 		for (int i = 0; i < count; i++)
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value == data.getvalue1())
@@ -214,8 +213,8 @@ public class ListContainer {
 		return result;
 	}
 	
-	// String °ªÀ» Ã£¾Æ¼­ ÇØ´ç ³ëµå¸¦ ¸®ÅÏÇÑ´Ù.
-	// 12:05 ±îÁö  ±¸ÇöÇØº¾½Ã´Ù.
+	// String ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	// 12:05 ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½Ã´ï¿½.
 	public int[] findNode(String _value)
 	{
 		int [] result = null;
@@ -225,12 +224,12 @@ public class ListContainer {
 		int dataCount = 0;
 		int idx = 0;
 		
-		// 1. _value¿Í °°Àº °ªÀ» °¡Áø ³ëµåÀÇ °³¼ö¸¦ ±¸ÇÑ´Ù.
+		// 1. _valueï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 		for (int i = 0; i < count; i++)
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value.equals(data.getvalue2()))
@@ -241,16 +240,16 @@ public class ListContainer {
 			target = target.getNext();
 		}
 		
-		// 2. Ã£Àº µ¥ÀÌÅÍ °³¼ö¸¸Å­ ¹è¿­À» ¸¸µç´Ù.
+		// 2. Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ ï¿½è¿­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 		result = new int[dataCount];
 		target = header;
 		
-		// 3. ÀÎµ¦½º¸¦ Ã£¾Æ¼­ ¹è¿­À» Ã¤¿öÁØ´Ù.
+		// 3. ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½è¿­ï¿½ï¿½ Ã¤ï¿½ï¿½ï¿½Ø´ï¿½.
 		for (int i = 0; i < count; i++)
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value.equals(data.getvalue2()))
@@ -270,10 +269,10 @@ public class ListContainer {
 	}
 	
 	// DEV
-	// °°Àº °ªÀ» °¡Áø ³ëµåµéÀ» ¸®ÅÏÇÏ´Â findDataÇÔ¼ö¸¦ ¾î¶»°Ô ±¸ÇÒ°ÍÀÎ°¡?
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ findDataï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½ï¿½ï¿½Ò°ï¿½ï¿½Î°ï¿½?
 	
 		
-	// ³ëµå µ¥ÀÌÅÍ¸¦ ¸®ÅÏÇÑ´Ù.
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	public NodeData getNodeData(int _index)
 	{
 		Node target = header;
@@ -311,7 +310,7 @@ public class ListContainer {
 		return count;
 	}
 
-	// ¸ðµç ³ëµå¸¦ Ãâ·Â.
+	// ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½.
 	// index = 0
 	// 1, "abc"
 	public void printAll()

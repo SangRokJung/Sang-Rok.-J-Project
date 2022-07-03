@@ -1,9 +1,9 @@
-package com.algorithm;
+package hello0701.algorithm;
 
 public class DoubleListContainer {
-	private Node head;		// ³ëµåÀÇ Ã³À½
-	private Node tail;		// ³ëµåÀÇ ¸¶Áö¸·	
-	private int count;		// ³ëµåÀÇ °³¼ö
+	private Node head;		// ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+	private Node tail;		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½	
+	private int count;		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	
 	public DoubleListContainer()
 	{
@@ -27,7 +27,7 @@ public class DoubleListContainer {
 		if ((_index < 0) || (_index >=count))
 			return null;
 		
-		// headºÎÅÍ Ã£¾Æ µé¾î°£´Ù.
+		// headï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½î°£ï¿½ï¿½.
 		if (_index <= middle)
 		{
 			target = head;
@@ -61,14 +61,14 @@ public class DoubleListContainer {
 		Node target = null;
 		Node newNode = new Node();
 		
-		// ³ëµå°¡ ÇÏ³ªµµ ¾øÀ½.
+		// ï¿½ï¿½å°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		if (count == 0)
 		{
 			head = newNode;			
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµå¸¦ °¡Áö°í ¿Í¼­ ±× µÚ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			target = getNode(count - 1);
 			
 			target.setNext(newNode);
@@ -141,14 +141,14 @@ public class DoubleListContainer {
 		Node target = null;
 		Node newNode = _newNode;
 		
-		// ³ëµå°¡ ÇÏ³ªµµ ¾øÀ½.
+		// ï¿½ï¿½å°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		if (count == 0)
 		{
 			head = newNode;			
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµå¸¦ °¡Áö°í ¿Í¼­ ±× µÚ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			target = getNode(count - 1);
 			
 			target.setNext(newNode);
@@ -225,14 +225,14 @@ public class DoubleListContainer {
 		
 		newNode.setData(_newNodeData);
 		
-		// ³ëµå°¡ ÇÏ³ªµµ ¾øÀ½.
+		// ï¿½ï¿½å°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		if (count == 0)
 		{
 			head = newNode;			
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµå¸¦ °¡Áö°í ¿Í¼­ ±× µÚ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			target = getNode(count - 1);
 			
 			target.setNext(newNode);
@@ -310,14 +310,14 @@ public class DoubleListContainer {
 		Node newNode = new Node();
 		newNode.setData(_value1, _value2);
 		
-		// ³ëµå°¡ ÇÏ³ªµµ ¾øÀ½.
+		// ï¿½ï¿½å°¡ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		if (count == 0)
 		{
 			head = newNode;			
 		}
 		else
 		{
-			// ¸¶Áö¸· ³ëµå¸¦ °¡Áö°í ¿Í¼­ ±× µÚ¿¡ ¹°¸°´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í¼ï¿½ ï¿½ï¿½ ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
 			target = getNode(count - 1);
 			
 			target.setNext(newNode);
@@ -465,7 +465,7 @@ public class DoubleListContainer {
 					
 		}
 		
-		// Á¦ÀÏ ¸¶Áö¸· ³ëµå¸¦ Áö¿î´Ù.
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ï¿½.
 		if (_index == (count-1))
 		{
 			tail = prevNode;
@@ -485,19 +485,19 @@ public class DoubleListContainer {
 		
 		do
 		{
-			// 1. µ¥ÀÌÅÍ¸¦ °¡Áö¿Â´Ù. 
+			// 1. ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. 
 			data = target.getData();
 			
-			// µ¥ÀÌÅÍ°¡ Áö¿öÇÒ ³ðÀÌ¸é
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½
 			if (_value1 == data.getvalue1())
 			{
-				//Áö¿îµÚ Áö¿î È½¼ö Áõ°¡
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				deleteNodebyIndex(i - delCount);
 				delCount++;
 							
 			}
 
-			// Å¸°ÙÀ» ´ÙÀ½À¸·Î ¿Å±ä´Ù.
+			// Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ï¿½.
 			target = target.getNext();							
 			i++;
 			
@@ -516,19 +516,19 @@ public class DoubleListContainer {
 		
 		do
 		{
-			// 1. µ¥ÀÌÅÍ¸¦ °¡Áö¿Â´Ù. 
+			// 1. ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. 
 			data = target.getData();
 			
-			// µ¥ÀÌÅÍ°¡ Áö¿öÇÒ ³ðÀÌ¸é
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½
 			if (true == _value2.equals(data.getvalue2()))
 			{
-				//Áö¿îµÚ Áö¿î È½¼ö Áõ°¡
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				deleteNodebyIndex(i - delCount);
 				delCount++;
 							
 			}
 
-			// Å¸°ÙÀ» ´ÙÀ½À¸·Î ¿Å±ä´Ù.
+			// Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ï¿½.
 			target = target.getNext();							
 			i++;
 			
@@ -547,20 +547,20 @@ public class DoubleListContainer {
 		
 		do
 		{
-			// 1. µ¥ÀÌÅÍ¸¦ °¡Áö¿Â´Ù. 
+			// 1. ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. 
 			data = target.getData();
 			
-			// µ¥ÀÌÅÍ°¡ Áö¿öÇÒ ³ðÀÌ¸é
+			// ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½
 			if ((_value1 == data.getvalue1()) &&
 				(true == _value2.equals(data.getvalue2())))
 			{
-				//Áö¿îµÚ Áö¿î È½¼ö Áõ°¡
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				deleteNodebyIndex(i - delCount);
 				delCount++;
 							
 			}
 
-			// Å¸°ÙÀ» ´ÙÀ½À¸·Î ¿Å±ä´Ù.
+			// Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å±ï¿½ï¿½.
 			target = target.getNext();							
 			i++;
 			
@@ -606,7 +606,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value1 == data.getvalue1())
@@ -625,7 +625,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value1 == data.getvalue1())
@@ -656,7 +656,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value2.equals(data.getvalue2()))
@@ -675,7 +675,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if (_value2.equals(data.getvalue2()))
@@ -710,7 +710,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if ((_value1 == data.getvalue1()) &&
@@ -730,7 +730,7 @@ public class DoubleListContainer {
 		{
 			data = target.getData();
 			
-			// data°¡ Á¸ÀçÇÑ´Ù.
+			// dataï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 			if (null != data)				
 			{
 				if ((_value1 == data.getvalue1()) &&

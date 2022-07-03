@@ -8,11 +8,9 @@ public class Exercise9_5 {
             char ch = src.charAt(i);
 
             if(delCh.indexOf(ch) == -1){
-                
+                sb.append(ch);
             }
         }
-
-
         return sb.toString();
     }
 

@@ -1,4 +1,4 @@
-package com.algorithm;
+package hello0701.algorithm;
 
 public class NodeData {
 	
