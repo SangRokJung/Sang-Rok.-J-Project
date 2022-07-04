@@ -28,9 +28,5 @@ public class HashSmple {
             val = iter.next();
             System.out.println(val);
         }
-
-
-
-
     }
 }
