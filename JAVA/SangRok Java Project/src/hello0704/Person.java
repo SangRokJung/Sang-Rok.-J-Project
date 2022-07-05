@@ -1,4 +1,4 @@
-package hello0703;
+package hello0704;
 
 public class Person implements Comparable<Person> {
     // 단순한 정렬이 아닌 기준이 존재하는 정렬을 생성한다.
@@ -15,19 +15,22 @@ public class Person implements Comparable<Person> {
         this.age = age;
     }
 
+    // getter
     public int getAge() {
         return this.age;
+    }
+    public String getName() {
+        return this.name;
     }
 
     @Override
     public int compareTo(Person other) {
-        //return this.age - other.age 오름차순
-        //return other.age - this.age 내림차순
-
-        if(this.age > other.age){
+ 
+        // 이름의 글자수 기준, 오름차순
+        if(this.name.length() > other.name.length()){
             return 1;
         }
-        else if(this.age < other.age){
+        else if(this.name.length() < other.name.length()){
             return -1;
         }
         else{ //같은 경우
@@ -37,7 +40,7 @@ public class Person implements Comparable<Person> {
 
     @Override
     public String toString(){
-        return "Person{" + name + "," + age + "}";
+        return "Person[name : " + name + ", age : " + age + "]";
     }
 
 
