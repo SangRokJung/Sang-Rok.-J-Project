@@ -23,6 +23,24 @@ public class Queue2 {
         temp = q.peek();
         System.out.println("q.peek() = " + q.peek());
 
+        temp = q.peek();
+        System.out.println("q.peek() = " + q.peek());
+
+        temp = q.peek();
+        System.out.println("q.peek() = " + q.peek());
+
+        temp = q.poll();
+        System.out.println("q.poll() = " + q.poll());
+
+        temp = q.poll();
+        System.out.println("q.poll() = " + q.poll());
+
+        temp = q.poll();
+        System.out.println("q.poll() = " + q.poll());
+
+        temp = q.poll();
+        System.out.println("q.poll() = " + q.poll());
+
 
     }
 
