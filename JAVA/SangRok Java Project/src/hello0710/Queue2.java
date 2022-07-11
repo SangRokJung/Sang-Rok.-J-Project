@@ -42,6 +42,11 @@ public class Queue2 {
         System.out.println("q.poll() = " + q.poll());
 
 
+        // Exceoption Code
+        // Remove
+        
+
+
     }
 
 }
