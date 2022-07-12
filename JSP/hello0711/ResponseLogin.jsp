@@ -19,12 +19,9 @@ if (id.equalsIgnoreCase("jsh") && pwd.equalsIgnoreCase("1234"))
 }
 else
 {
-	
 	request.getRequestDispatcher("ResponseMain.jsp?loginError=1").forward(request, response);
-	
 }
 
 %>
-
 </body>
 </html>

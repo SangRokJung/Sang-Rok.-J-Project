@@ -27,6 +27,5 @@ if (loginError != null)
 	<input type="submit" value="Response 헤더 정보 설정">
 </form>
 
-
 </body>
 </html>
