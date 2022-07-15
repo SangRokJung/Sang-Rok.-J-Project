@@ -17,40 +17,40 @@
 	Statement stmt	= null;
 	
 	request.setCharacterEncoding("UTF-8");
-	String custno = request.getParameter("custno");
-	String custname = request.getParameter("custname");
-	String phone = request.getParameter("phone");
-	String address= request.getParameter("address");
-	String joindate = request.getParameter("joindate");
-	String grade = request.getParameter("grade");
-	String city = request.getParameter("city");
+
+	String CUSTNO = request.getParameter("CUSTNO");
+	String CUSTNAME = request.getParameter("CUSTNAME");
+	String PHONE = request.getParameter("PHONE");
+	String ADDRESS= request.getParameter("ADDRESS");
+	String JOINDATE = request.getParameter("JOINDATE");
+	String GRADE = request.getParameter("GRADE");
+	String CITY = request.getParameter("CITY");
+
+	String sql = "INSERT INTO MEMBER_TBL_02 VALUES(" + CUSTNO + ", " +
+	"'" + CUSTNAME + "', " +
+	"'" + PHONE + "', " +  
+	"'" + ADDRESS + "', " +
+	"'" + JOINDATE + "', " +
+	"'" + GRADE + "', " +
+	"'" + CITY + "')";
+
+	System.out.println("[join.jsp] sql = " + sql);
 	
 try{
 	conn = DBConnection.getConnection();
+	conn.setAutoCommit(true);
+
 	stmt = conn.createStatement();
+	stmt.executeUpdate(sql);
 	
-	String sql = "INSERT INTO MEMBER_TBL_02 VALUES(" + custno + ", " +
-			"'" + custname + "', " +
-			"'" + phone + "', " +  
-			"'" + address + "', " +
-			"'" + joindate + "', " +
-			"'" + grade + "', " +
-			"'" + city + "')";
-	
-	
-	result = stmt.executeUpdate(sql);
-	
-	
-	System.out.println("[join.jsp] sql = " + sql);
-	conn.commit();
-	
+	<!-- result = stmt.executeUpdate(sql);
+	conn.commit(); -->
 }
 catch(Exception excp)
 {
 	result = 0;
-	System.out.println(excp.getMessage());
+	System.out.println("[join.jsp] : " + excp.getMessage());
 	
-		
 }	
 	
 %>
