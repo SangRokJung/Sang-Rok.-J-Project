@@ -137,7 +137,6 @@ catch(Exception excp)
 	
 	const checkDataSize = function()
 	{
-		// 배열, 오브젝트.
 		const arInputBox = [
 			{ box : document.querySelector("#id_custname"), errMsg : '회원성명이 입력되지 않았습니다.'	},
 			{ box : document.querySelector("#id_phone"),	errMsg : '회원전화가 입력되지 않았습니다.' 	},
@@ -172,16 +171,11 @@ catch(Exception excp)
 			frmReg.target = "hiddenframe";
 			frmReg.submit();
 		}
-		
 	});
-	
 	
 	btnInq.addEventListener('click', ()=>{
 		location.href = 'inquiry.jsp';
-		
-		
 	});
-	
 })();
 
 </script>

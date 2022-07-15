@@ -1,7 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "JAVA/0531",
-        "JAVA/0530/Answer",
-        "JAVA/SangRok Java Project/src/hello0710"
+        "JAVA/SangRok Java Project/src/hello0710",
+        "JAVA/SangRok Java Project/src/hello0715"
     ]
 }
