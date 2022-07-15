@@ -30,5 +30,15 @@ public class Ex10_8 {
         System.out.println(sdf7.format(today));
         System.out.println(sdf8.format(today));
         System.out.println(sdf9.format(today));
+
+        // 2022-07-15
+        // '22년 7월 15일 금요일
+        // 2022-07-15 17:33:475
+        // 2022-07-15 17:33:35 오후
+        // 오늘은 올 해의 196번째 날 입니다.
+        // 오늘은 이 달의 15번째 날 입니다.
+        // 오늘은 올 해의 29번째 주입니다.
+        // 오늘은 올 해의 3번째 주입니다.
+        // 오늘은 이 달의 3번째 금요일 입니다.
     }
 }
