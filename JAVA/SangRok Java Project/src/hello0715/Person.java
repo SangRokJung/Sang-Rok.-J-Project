@@ -1,4 +1,4 @@
-package hello0710;
+package hello0715;
 
 public class Person implements Comparable<Person> {
     private String name;

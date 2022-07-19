@@ -35,6 +35,6 @@ public class Ex10_5 {
         //................................................................
 
         // 월 말일을 알 수 있다. 
-        getActualMaximum(Calendar.DATE);
+        // getActualMaximum(Calendar.DATE);
     }
 }
