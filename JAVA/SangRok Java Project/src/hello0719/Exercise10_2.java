@@ -7,15 +7,18 @@ import java.util.Scanner;
 
 public class Exercise10_2 {
     public static void main(String[] args) {
-        String pattern1 = "yyyy-MM-dd";
+        // pattern set
+        String pattern1 = "yyyy/MM/dd";
         String pattern2 = "입력하신 날짜는 E요일 입니다.";
 
+        // SDF set
         DateFormat sdf  = new SimpleDateFormat(pattern1);
         DateFormat sdf2 = new SimpleDateFormat(pattern2);
 
-
+        // Scanner set
         Scanner s = new Scanner(System.in);
 
+        // Date 설정
         Date inDate = null;
         
         // 화면으로 부터 날짜를 입력 받는다.
@@ -26,7 +29,6 @@ public class Exercise10_2 {
                 inDate = sdf.parse(s.nextLine());
                 break;
 
-
             }
             catch(Exception e){
                 System.out.println("다시 입력하세요.");
@@ -34,6 +36,7 @@ public class Exercise10_2 {
         }
         while(true);
 
+        // 출력
         System.out.println(sdf2.format(inDate));
 
     }
