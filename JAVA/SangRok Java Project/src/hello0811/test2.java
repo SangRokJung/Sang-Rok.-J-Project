@@ -24,6 +24,7 @@ class Solution {
                 answer = key;   //해당 key를 반환.
             }
         }
+        System.out.println();
 
         return answer;
     }
