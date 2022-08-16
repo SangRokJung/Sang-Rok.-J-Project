@@ -1,7 +1,7 @@
 package hello0816;
 
-public class test1_ans {
-    public String solution(String new_id) {
+public class test2 {
+    public static String solution(String new_id) {
         String answer = "";
         String temp = new_id.toLowerCase();
 
@@ -22,9 +22,8 @@ public class test1_ans {
 
         answer=temp;
         return answer;
+        
     }
-}
-
 
     public static void main(String[] args) {
         String id2 = "z-+.^.";
@@ -33,4 +32,9 @@ public class test1_ans {
         String id4 = "=.=";
         System.out.println(solution(id4)); 
     }
+
 }
+
+
+
+
