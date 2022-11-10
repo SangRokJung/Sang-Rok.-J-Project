@@ -1,0 +1,587 @@
+▶ 차원 축소를 하는 이유
+다중 공신성 문제 : 각각의 Feature(독립 변수)들 끼리의 상관관계가 강할 수 록 모델의 과적합이 발생하여 학습 성능이 저하될수있다.
+
+따라서 Feature가 모델의 성능에 어떤 영향을 줄 지 파학하고, 선택/가공 하는 과정을 거친다.
+
+Feature selection(선택) : 불필요한 Feature는 버린다. 
+Feature Extraction(추출) : Feature들을 선택하는 것이 아니라, 더 작은 차원으로 Feature들을 맵핑한다. 예) 100차원의 테이블을 50차원으로
+PCA
+LDA
+SVD
+NMF
+Feature Engineering(생성) : 해당 데이터와 만들고자하는 머신러닝 모델의 기능 활용 목적에 따라 새로운 피쳐들을 생성한다. 데이터 테이블에서 Feature가 부족한 상황일때 적용하는 기법.
+
+
+▶ 주성분 분석(Principal component Analysis)
+연관성 높은 피쳐들을 하나로 합쳐주는 작업.
+
+입력 데이터의 공분산 행렬을 구한다.
+공분산 행렬을 고유값 분해 하여 고유 벡터와 고유값을 구한다.
+고유값이 가장 큰 K개의 고유 벡터 추출.
+고유값이 가장 큰 순으로 추출된 고유벡터를 이용해 입력 데이터들을 선형 반환.
+
+
+
+
+1. 각 컬럼별 데이터 표준화.
+해당 데이터 컬럼들의 주성분을 분석하기 전 각 컬럼별 데이터를 표준화 시킨다.
+
+* Standardization(표준화) : 각 Feature들의 값들을 평균 0 표준편차인 표준 정규 분포로 변환.
+
+* Normalization(정규화) :  각 Feature들의 값들을 0과 1사이의 값으로 변환.
+
+# 각 컬럼별 데이터 표준화
+
+from sklearn.preprocessing import StandardScaler
+
+df_inputs = df_train.iloc[:, 1:]
+df_scaled = StandardScaler().fit_transform(df_inputs)
+tt_scale_DF = pd.DataFrame(df_scaled)
+tt_scale_DF['Survived'] = df_train.Survived
+tt_scale_DF.describe()
+
+
+2. 주성분 분석.
+▷ 타이타닉 X데이터를 2차원으로 축소.
+
+from sklearn.decomposition import PCA
+
+# 타이타닉 X데이터를 2차원으로 축소
+# n_components 몇개의 Feature로 데이터 차원 줄일것인가
+pca = PCA(n_components=2)
+# 표준화 데이터를 학습
+X2D = pca.fit_transform(X)
+
+result = pd.DataFrame(X2D)
+result.index = list(range(1, 892))
+result.columns = ['z1', 'z2']
+result['y'] = y
+result.plot(kind='scatter', x='z1', y='z2', figsize=(10, 5),
+        cmap='viridis', c=y, s=50, alpha=0.3)
+▷ 적절한 차원 수 선택하기
+
+# 설명된 분산의 비율
+# 적절한 차원 수 선택하기
+pca = PCA()
+pca.fit(X_train)
+cumsum = np.cumsum(pca.explained_variance_ratio_)
+d = np.argmax(cumsum >= 0.95) + 1
+pca = PCA(n_components=d)
+XTD = pca.fit_transform(X)
+
+# 실제로는 분산의 비율로 설정하는 것이 좋음
+
+
+
+
+
+
+
+
+차원의 저주
+차원의 저주
+학습 데이터가 수천에서 수백만 개의 특성을 가지면 훈련을 느리게 할 뿐만 아니라, 좋은 솔루션을 찾기 어렵게 만드는 문제가 발생.
+우리는 3차원 세계에서 살고 있어서 고차원 공간을 직관성 상상 불가
+3차원 큐브에서 임의의 두 점을 선택하면 평균 거리는 대략 0.66, 만약 1,000,000차원의 초입방체에서 두점을 무작위로 선택할 경우 평균거리는 약 428.25
+훈련 세트의 차원이 클수록 과대적합 위험이 커짐
+해결 방법
+이론적으로 차원의 저주를 해결하는 해결책 하나는 훈련샘플의 밀도가 충분히 높아질 때 까지 훈련. 세트의 크기를 키우는 것. 불행하게도 실제로는 일정 빌도의 도달하기 위해 필요한 훈련 샘플 수는 차원 수가 커짐에 따라 기하 급수적으로 늘어남.
+
+
+
+점, 선, 정사각형, 정육면체, 테서렉트(0차원에서 4차원 까지 초입방체)
+
+
+
+
+▶ 차원을 감소시키는 두 가지 주요한 접근법
+투영
+매니폴드 학습
+
+
+
+
+
+
+딥러닝은 가상의 차원을 만들어 해석하기 때문에 사용자가 알 수 없다.
+
+새로운 변수를 만든다.
+
+차원을 만들 수 록 표현력이 많아진다.
+
+
+
+
+
+
+
+
+
+
+
+투영
+대부분의 실전 문제는 훈련 샘플이 모든 차원에 걸쳐 균일하게 퍼져 있지 않음.
+
+모든 훈련 샘플이 고차원 공간 안의 저차원 부분 공간에(또는 가까이) 놓여 있음.
+
+모든 훈련 샘플을 이 부분 공간에 수직으로(즉, 샘플과 평면 사이의 가장 짦은 직선을 따라) 투영하면 2D Dataset을 얻음.
+
+그러나 차원 축소에 있어서 투영이 언제나 쵝선의 방법은 아니며, 많은 경우 스위스 롤 데이터 셋처럼 부분 공간이 뒤틀리거나 휘어 있기도 단순히 평면에 투영시키면 스위으 롤의 층이 서로 뭉개짐.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+매니폴드 학습
+대부분 실제 고차원 데이터셋이 더 낮은 저차원 매니폴드에 가깝게 놓여 있다는 매니폴드 가정 또는 매니폴드 가설에 근거.
+
+2D 매니 폴드는 고차원 공간에서 휘어지거나 뒤틀린 2D 모양
+
+d차원 매니폴드는 국부적으로 d차원 초평면으로 보일 수 있는 n차원 공간의 일부(d<n)
+
+
+
+
+
+
+
+
+
+
+
+
+
+데이터 셋에 따라서 차원축소가 옳은 방법이 아닐 수 도 있다.
+
+하지만 사용자는 차원을 알 수 없기 때문에 PCA를 사용한다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PCA(주성분 분석)
+Principal component analysis.
+
+차원축소(dimensionality rediction)의 변수추출(feature extraction) 기법으로 널리 쓰이고 있다.
+
+주성분이란 전체 데이터(독립변수들)의 분산을 가장 잘 설명하는 성분을 말한다.
+
+변수의 개수는 차원의 개수를 뜻함.
+
+
+
+
+
+
+
+
+
+
+
+Y에 대해서 관계성이 높은 변수와 낮은 변수가 있다.
+
+X10, X11과 같이 관계성이 낮은 변수는 삭제한다.
+
+X1, X4와 같이 상관관계가 높은경우는 삭제한다.
+
+
+
+
+
+
+데이터간의 독립성이 유효하지 않으면 자기참조 문제 발생.
+
+
+
+
+이상적인 차원
+
+Demension reduction
+0.8이상의 관계성은 긍정적이지 않은 상황이다.
+
+
+
+
+딥러닝은 자동으로 차원을 수정하기 때문에 사용자가 관여할 일이 없다.
+
+
+
+
+
+▶ Find Maximum eigen value
+
+
+
+
+
+
+
+
+
+
+
+
+
+▶ SCIKET - LEARN으로 구현
+from sklearn.decomposition import PCA
+import numpy as np
+
+# X데이터를 2차원으로 축소
+pca = PCA(n_components=2)
+X2D = pca.fit_transform(X)
+
+# 설명된 분산의 비율
+# 적절한 차원 수 선택하기
+pca = PCA()
+pca.fit(X_train)
+cumsum = np.cumsum(pca.explained_variance_ratio_)
+d = np.argmax(cumsum >= 0.95) + 1
+PCA(n_components=d)
+X2D = pca.fit_transform(X_train)
+
+
+
+
+
+
+
+
+
+
+▶ 압축을 위한 PCA
+복원시 약간의 재구성 오차가 발생.
+
+원본 데이터와 매우 비슷.
+
+pca = PCA(n_components=2)
+X_reduced = pca.fit_transform(X_train)
+X_recovered = pca.inverse_transform(X_reduced)
+
+
+
+
+
+
+
+
+
+
+▶ 랜덤 PCA
+svd_solver 매개 변수를 "randomized"로 지정하면 랜덤 PCA
+
+확률적 알고리즘 사용으로 주성분에 대한 근사값을 빠르게 검색
+
+기본값 auto
+auto 지정시 자동으로 계산하여 랜덤으로 돌릴 지 완전한 계산을 할 지 결정
+강제 계산시 Full 옵션 지정
+rnd_pca = PCA(n_components=154, svd_solver="randomized")
+X_reduced = rnd_pca.fit_transform(X_train)
+
+
+
+
+
+
+
+
+
+
+
+
+▶ 점진적 PCA
+대용량 데이터 메모리를 올리는 문제 해결
+
+훈련 데이터를 미니 배치로 나눠 한번에 하나씩 주입
+
+대용량 데이터 혹은 온라인으로 PCA 적용 시 유리
+
+
+
+from sklearn.decomposition import IncrementalPCA
+
+n_batches = 100
+inc_pca = IncrementalPCA(n_batches=154)
+for X_batch in np.array_split(X_train, n_batches):
+    inc_pca.partial_fit(X_batch)
+    
+X_reduced = inc_pca.transform(X_train)
+
+
+
+
+
+
+
+
+
+
+
+
+ 다중공선성 (Multicollinearity)
+통계학의 회귀분석에서 독립변수들 간의 강한 상관관계가 나타나는 문제.
+
+독립변수들 간의 정호가한 선형관계가 존재하는 완전 공선성의 경우와 독립변수들간의 높은 선형 관계가 존재하는 다중공선성으로 구분하기도 한다. 이는 회귀분석의 전제 가정을 위배하는 것이므로 적절한 회귀분석을 위해 해결해야 하는 문제가 된다.
+
+
+
+▶ 진단법
+독립변수들간의 상관계수를 구한다.
+상관관계가 매우 높은 피처들 확인.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PCA VS LDA
+▶ PCA (Principal component Analysis)
+
+데이터의 클래스의 차이가 평균보다 분산의 차이에 있을 때, PCA는 LDA보다 뛰어난 성능을 보여준다.
+
+
+
+▶ LDA (Linear Discriminant Analysis)
+
+LDA는 Classification과 Dimensinal Reduction(차워 축소)까지 동시에 사용하는 알고리즘.
+
+LDA에서의 핵심은 classifcation을 할 때 클래스 내의 분산의 최소가 되도록 하되, 클래스끼리의 분산은 최대가 되도록 한다는 것.
+
+분류 알고리즘이지만 훈련 과정에서 클래스 사이를 가장 잘 구분하는 축을 학습. 이 축은 데이터가 투영되는 초평면을 정의하는 데 사용.
+
+데이터의 클래스의 차이가 분산보다 평균의 차이에 있을 때, LDA는 PCA보다 뛰어난 성능을 보여준다.
+
+3D plot으로 데이터를 표현할 때, LDA는 PCA보다 뛰어난 성능을 보여준다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+▷  랜덤 투영(random projection)
+랜덤한 선형 투영을 사용해 데이터를 저차원 공간으로 투영
+
+
+▷ 다차원 스케일링(MDS, multidimensional scaling)
+샘플 간의 거리를 보존하면서 차원을 축소
+
+
+▷ Isomap
+각 샘플을 가장 가까운 이웃과 연결하는 식으로 그래프를 만들고, 샘플 간의 지오데식 거리(geodesic distance)를 유지하면서 차원을 축소
+
+
+▷ t-SNE(t-distributed stochastic neighbor embedding)
+비슷한 샘플은 가까이, 비슷하지 않은 샘플은 멀리 떨어지도록 하면서 차원을 축소
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Unsupervised Learning(Clustering Algorithm)
+비지도 학습
+Clustering 데이터에서 비슷한 객체들을 하나의 그룹으로 묶는 것.
+유사도(거리) 정보 기반
+좌표에 거리에 따라 유사도를 측정.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CLUSTERING ALGORITHM
+K-mean clustering : 쉽고 간단, 현업에서 시계열 클러스터링을 많이 사용.
+
+Hierarchical clustering
+
+Density-based spatial clustering of applications with noise(DBSCAN)
+
+Gaussain mixture model
+
+Self-organizing map(SOM)
+
+
+
+
+
+
+
+▶K-mean clustering
+
+
+
+
+
+
+
+
+
+
+
+
+유클리디안 거리 = L2 DISTANCE
+
+
+
+
+
+
+코사인 유사도
+
+두 벡터 사이의 코사인 각도를 구해 서로의 유사도를 구하는 방식
+텍스트 데이터의 유사도를 구하는 방법 중 하나
+데이터 셋의 길이 차이가 심한 상황일 때도 데이터들의 유사도를 판단 할 수 있다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+K-means Algorithm.
+▶ Clustering(군집화)
+
+대표적인 별도의 레이블이 없는 데이터 안에서 패턴과 구조를 발견하는 비지도 학습.
+
+Classfication(분류)와는 엄연히 다르다. Classfication은 미리 레이블이 붙어 있는 데이터들을 학습한뒤 새로운 데이터에 대해 분류를 수행하지마느 Clustreing은 레이블을 모르더라도 비슷한 속성들을 가진 데이터들을 묶어 주는 역할을 한다.
+
+
+
+▶ 군집화의 사용 예
+
+추천 엔진 : 사용자의 경험을 개인화 하기 위해 비슷한 제품 묶어주기.
+검색 엔진 : 관련 주제나 검색 결과 묶어주기.
+시장 세분화 : 지역, 인구 통계, 행동에 따라 비슷한 고객들 묶어주기.
+
+
+▶ 군집화의 목표
+
+서로 유사한 데이터들을 같은 그룹으로, 서로 유사하지 않은 데이터는 다른 그룹으로 분리하는 것이 된다.
+
+
+
+
+
+▶ K-means 알고리즘
+
+K는 데이터의 세트에서 찾을 것으로 예상되는 클러스터 그룹 수를 말한다.
+
+means는 각 데이터로부터 그 데이터가 속한 클러스터의 중심까지의 평균 거리를 말한다.( 이 값을 최소화 하는것이 알고리즘의 목표가 된다.)
+
+몇개의 그룹을 묶을것인가?
+데이터의 유사도를 어떻게 정의할 것인가?
+
+
+
+
+
+
+
+
+
+ㄹ
+
+
+
+
+
+
+
+
+K = 군집의 개수
+
+1번 centroid와 가까운 1군집,,
+
+
+
+
+
+
+
+
+
+
+
+▶ 군집도 이상 해결법
+
+일종의 하이퍼파라미터로서 해결이 가능하다.
+
+
+
+
+
